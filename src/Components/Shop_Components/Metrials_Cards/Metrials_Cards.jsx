@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import book from "../../../../public/Images/books.png";
+import mockImg from '../../../../public/Images/book-card-sample.jpg'
 import pdf from "../../../../public/Images/pdf.png";
 import openBook from "../../../../public/Images/open-book.png";
 
@@ -8,7 +9,8 @@ const Metrials_Cards = ({ data }) => {
   return (
     <div className="w-full max-w-[320px] mt-5 font-body">
       {/* Image Container */}
-      <div className="w-full h-[400px] bg-gray-400/50 rounded-lg mb-4"></div>
+      <div className="w-full h-[400px] bg-gray-400/50 rounded-lg mb-4 flex-center">
+      <img src={mockImg} alt="Image" className="" /></div>
       
       {/* Title and Arrow */}
       <div className="flex items-center justify-between w-full mb-2">
