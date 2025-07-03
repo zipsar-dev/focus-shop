@@ -1,6 +1,13 @@
 import React from "react";
+import Metrials_Cards from "../Metrials_Cards/Metrials_Cards";
 
 const Hero = () => {
+    const data = {
+        "title":"Title of the Book",
+        "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste unde dolor pariatur sapiente, facilis laudantium consectetur, accusamus ex est excepturi in nemo eaque explicabo itaque.",
+        "date":"SEPT'25 & JAN'26",
+        
+    }
   return (
     <div className="w-[80%] mx-auto h-screen flex-center mt-20">
       <div className="w-[30%] border-t border-gray-400/50 h-full">
@@ -49,10 +56,10 @@ const Hero = () => {
           <h1 className="text-xl font-semibold">CA Foundation</h1>
           <div className="w-[80%] mx-auto flex-center mt-10">
             <div className="w-1/2 flex-center">
-              <div className="w-[80%] h-[450px] bg-gray-400"></div>
+              <Metrials_Cards data={data}/>
             </div>
             <div className="w-1/2 flex-center">
-              <div className="w-[80%] h-[450px] bg-gray-400"></div>
+              <div className="w-[80%] h-[450px] bg-gray-400/50"></div>
             </div>
           </div>
         </div>
