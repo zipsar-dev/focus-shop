@@ -9,7 +9,7 @@ const Metrials_Cards = ({ data }) => {
   return (
     <div className="w-full max-w-[320px] mt-5 font-body">
       {/* Image Container */}
-      <div className="w-full h-[400px] bg-gray-400/50 rounded-lg mb-4 flex-center">
+      <div className="w-full bg-gray-400/50 rounded-lg mb-4 flex-center">
       <img src={mockImg} alt="Image" className="" /></div>
       
       {/* Title and Arrow */}
