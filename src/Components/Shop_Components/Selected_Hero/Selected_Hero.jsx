@@ -1,19 +1,23 @@
 import React from "react";
 import { BookOpen, FileLock2, PackageCheck, Truck } from "lucide-react";
 
-export default function Selected_Hero() {
+export default function Selected_Hero({ debug = true }) {
+  // Dev border toggler
+  const border = (cmd) =>
+    debug ? `border border-dashed border-red-400 p-2 rounded` : "";
+
   return (
     <div className="bg-[#fffafc] min-h-screen p-6 md:p-12 font-sans text-gray-800">
       {/* CMD-BREADCRUMB */}
-      <div className="text-sm text-gray-500 mb-6 border border-blue-300 p-2 rounded">
+      <div className={`text-sm text-gray-500 mb-6 ${border("CMD-BREADCRUMB")}`}>
         Home / Shop Study Material /{" "}
         <span className="text-black">CA Foundation Reviewer</span>
       </div>
 
       {/* CMD-HERO-SECTION */}
-      <div className="flex flex-col lg:flex-row gap-10 border border-green-300 p-4 rounded">
+      <div className={`flex flex-col lg:flex-row gap-10 ${border("CMD-HERO-SECTION")}`}>
         {/* CMD-IMAGE-SECTION */}
-        <div className="flex-1 flex justify-center items-center border border-yellow-400 p-2 rounded">
+        <div className={`flex-1 flex justify-center items-center ${border("CMD-IMAGE-SECTION")}`}>
           <img
             src="/path/to/your/image.png" // Replace with actual image path
             alt="CA Foundation Reviewer"
@@ -22,12 +26,12 @@ export default function Selected_Hero() {
         </div>
 
         {/* CMD-TEXT-CONTENT */}
-        <div className="flex-1 border border-purple-300 p-4 rounded">
+        <div className={`flex-1 ${border("CMD-TEXT-CONTENT")}`}>
           <h1 className="text-3xl font-semibold mb-2">Last Attempt Kit </h1>
           <p className="text-red-500 font-medium mb-4">Sept'25 & Jan'26</p>
 
           {/* CMD-BULLET-POINTS */}
-          <ul className="space-y-4 mb-10 border border-gray-300 p-4 rounded">
+          <ul className={`space-y-4 mb-10 ${border("CMD-BULLET-POINTS")}`}>
             <li className="flex gap-3 items-start">
               <BookOpen className="mt-1 text-blue-500" />
               <div>
@@ -77,11 +81,11 @@ export default function Selected_Hero() {
       </div>
 
       {/* CMD-MATERIAL-FORMAT */}
-      <div className="mt-12 border border-orange-300 p-6 rounded">
+      <div className={`mt-12 ${border("CMD-MATERIAL-FORMAT")}`}>
         <h2 className="text-lg font-semibold mb-3">CHOOSE MATERIAL FORMAT</h2>
 
         {/* CMD-FORMAT-BUTTONS */}
-        <div className="flex flex-wrap gap-4 border border-indigo-300 p-4 rounded">
+        <div className={`flex flex-wrap gap-4 ${border("CMD-FORMAT-BUTTONS")}`}>
           <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-300 to-purple-400 text-white font-medium shadow-md">
             📘 Paper Books
           </button>
@@ -97,7 +101,7 @@ export default function Selected_Hero() {
         </div>
 
         {/* CMD-DELIVERY-INFO */}
-        <div className="flex items-center gap-2 mt-6 text-blue-600 border border-cyan-300 p-2 rounded">
+        <div className={`flex items-center gap-2 mt-6 text-blue-600 ${border("CMD-DELIVERY-INFO")}`}>
           <Truck className="w-5 h-5" />
           <span className="text-sm">Delivered in 5–7 Days</span>
         </div>
@@ -105,6 +109,7 @@ export default function Selected_Hero() {
     </div>
   );
 }
+
 
 //File structure and component tags for reference:
 
