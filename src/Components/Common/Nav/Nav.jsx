@@ -28,7 +28,9 @@ const Nav = () => {
       isScrolled ? 'top-4' : 'top-10'
     }`}>
       {/* Left Section - Logo */}
-      <h1 className='font-bold text-xl sm:text-2xl font-heading cursor-pointer' onClick={() => Navigate('/')}>Logo</h1>
+      <h1 onClick={() => Navigate('/')}>
+        <img src='public\Images\logo.png' alt='Focus Logo' className='w-24 sm:w-28 md:w-32 lg:w-36 cursor-pointer' />
+      </h1>
       
       {/* Right Section - Cart & User Actions */}
       <div className='flex items-center justify-center gap-3 sm:gap-5 font-secondary'>
