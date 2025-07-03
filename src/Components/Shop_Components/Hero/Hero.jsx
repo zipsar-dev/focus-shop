@@ -85,7 +85,7 @@ const Hero = () => {
             key={sectionIndex}
             className="w-full mt-6 sm:mt-8 lg:mt-15 flex flex-col items-center"
           >
-            <h1 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8">
+            <h1 className="text-[30px] font-bold mb-6 sm:mb-8">
               {section.title}
             </h1>
 
