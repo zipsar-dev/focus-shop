@@ -4,9 +4,10 @@ import Metrials_Cards from "../Metrials_Cards/Metrials_Cards";
 const Hero = () => {
     const data = {
         "title":"Title of the Book",
-        "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste unde dolor pariatur sapiente, facilis laudantium consectetur, accusamus ex est excepturi in nemo eaque explicabo itaque.",
+        "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste unde dolor pariatur sapiente",
         "date":"SEPT'25 & JAN'26",
-        
+        "pdf":150,
+        "book":450
     }
   return (
     <div className="w-[80%] mx-auto h-screen flex-center mt-20">
@@ -55,7 +56,7 @@ const Hero = () => {
         <div className="w-full mt-15 col-center">
           <h1 className="text-xl font-semibold">CA Foundation</h1>
           <div className="w-[80%] mx-auto flex-center mt-10">
-            <div className="w-1/2 flex-center">
+            <div className="w-1/2 col-center">
               <Metrials_Cards data={data}/>
             </div>
             <div className="w-1/2 flex-center">
