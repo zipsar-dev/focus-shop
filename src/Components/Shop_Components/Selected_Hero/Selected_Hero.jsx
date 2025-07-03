@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BookOpen, FileLock2, PackageCheck, Truck } from "lucide-react";
 
-export default function Selected_Hero({ debug = true }) {
+export default function Selected_Hero({ debug = false }) {
   const [selectedFormat, setSelectedFormat] = useState("paper");
 
   // Dev border toggler
@@ -11,7 +11,7 @@ export default function Selected_Hero({ debug = true }) {
   return (
     <div className="bg-[#fffafc] min-h-screen p-6 md:p-12 font-sans text-gray-800">
       {/* CMD-BREADCRUMB */}
-      <div className={`text-sm text-gray-500 mb-6 ${border("CMD-BREADCRUMB")}`}>
+      <div className={`text-sm text-gray-500 mb-9 mt-6 ml-12 ${border("CMD-BREADCRUMB")}`}>
         Home / Shop Study Material /{" "}
         <span className="text-black">CA Foundation Reviewer</span>
       </div>
@@ -84,7 +84,7 @@ export default function Selected_Hero({ debug = true }) {
         <div className="flex flex-col items-center gap-4">
           {/* CMD-FORMAT-BUTTONS */}
           <div className={`w-full sm:w-[80%] ${border("CMD-FORMAT-BUTTONS")}`}>
-            <div className="flex flex-col sm:flex-row justify-between gap-2 p-1 rounded-full border border-gray-300 bg-gray-100 w-full">
+            <div className="flex flex-col sm:flex-row justify-between gap-2 p-1 rounded-full border border-gray-300 bg-gray-100 w-full h-18">
               {/* Paper Books */}
               <button
                 onClick={() => setSelectedFormat("paper")}
