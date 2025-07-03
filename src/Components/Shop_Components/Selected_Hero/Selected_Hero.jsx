@@ -7,7 +7,7 @@ export default function Selected_Hero({ debug = true }) {
 
   // Dev border toggler
   const border = (cmd) =>
-    debug ? `border border-dashed border-red-400 p-2 rounded` : "";
+    debug ? `border border-dashed border-white p-2 rounded` : "";
 
   return (
     <div className="bg-[#fffafc] min-h-screen p-6 md:p-12 font-sans text-gray-800">
@@ -30,7 +30,7 @@ export default function Selected_Hero({ debug = true }) {
           )}`}
         >
           <img
-            src="/path/to/your/image.png" // Replace with actual image path
+            src="public\Images\books-hero-sample.jpg" // Replace with actual image path
             alt="CA Foundation Reviewer"
             className="w-[90%] max-w-[500px] drop-shadow-xl"
           />
@@ -93,7 +93,7 @@ export default function Selected_Hero({ debug = true }) {
 
       {/* CMD-MATERIAL-FORMAT */}
       <div className={`mt-12 ${border("CMD-MATERIAL-FORMAT")}`}>
-        <h2 className="text-lg font-semibold mb-3">CHOOSE MATERIAL FORMAT</h2>
+        <h2 className="text-lg font-semibold mb-3 flex justify-left ml-90">CHOOSE MATERIAL FORMAT</h2>
 
         {/* CMD-FORMAT-BUTTONS */}
         <div
