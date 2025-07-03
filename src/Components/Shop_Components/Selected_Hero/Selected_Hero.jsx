@@ -1,10 +1,13 @@
 import React from "react";
 import { BookOpen, FileLock2, PackageCheck, Truck } from "lucide-react";
+import { useState } from "react";
 
-export default function Selected_Hero({ debug = false }) {
+export default function Selected_Hero({ debug = true }) {
+  const [selectedFormat, setSelectedFormat] = useState("paper");
+
   // Dev border toggler
   const border = (cmd) =>
-    debug ? `border border-dashed border-red-400 p-2 rounded` : "";
+    debug ? `border border-dashed border-white p-2 rounded` : "";
 
   return (
     <div className="bg-[#fffafc] min-h-screen p-6 md:p-12 font-sans text-gray-800">
@@ -15,11 +18,19 @@ export default function Selected_Hero({ debug = false }) {
       </div>
 
       {/* CMD-HERO-SECTION */}
-      <div className={`flex flex-col lg:flex-row gap-10 ${border("CMD-HERO-SECTION")}`}>
+      <div
+        className={`flex flex-col lg:flex-row gap-10 ${border(
+          "CMD-HERO-SECTION"
+        )}`}
+      >
         {/* CMD-IMAGE-SECTION */}
-        <div className={`flex-1 flex justify-center items-center ${border("CMD-IMAGE-SECTION")}`}>
+        <div
+          className={`flex-1 flex justify-center items-center ${border(
+            "CMD-IMAGE-SECTION"
+          )}`}
+        >
           <img
-            src="/path/to/your/image.png" // Replace with actual image path
+            src="public\Images\books-hero-sample.jpg" // Replace with actual image path
             alt="CA Foundation Reviewer"
             className="w-[90%] max-w-[500px] drop-shadow-xl"
           />
@@ -82,26 +93,63 @@ export default function Selected_Hero({ debug = false }) {
 
       {/* CMD-MATERIAL-FORMAT */}
       <div className={`mt-12 ${border("CMD-MATERIAL-FORMAT")}`}>
-        <h2 className="text-lg font-semibold mb-3">CHOOSE MATERIAL FORMAT</h2>
+        <h2 className="text-lg font-semibold mb-3 flex justify-left ml-90">CHOOSE MATERIAL FORMAT</h2>
 
         {/* CMD-FORMAT-BUTTONS */}
-        <div className={`flex flex-wrap gap-4 ${border("CMD-FORMAT-BUTTONS")}`}>
-          <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-300 to-purple-400 text-white font-medium shadow-md">
-            📘 Paper Books
-          </button>
-          <button className="px-6 py-3 rounded-lg border border-gray-400 text-gray-700 font-medium hover:bg-gray-100">
-            🔒 Secure PDF
-          </button>
-          <button className="px-6 py-3 rounded-lg border border-pink-400 text-pink-600 font-medium bg-pink-50 shadow-sm">
-            📦 Bundle (Secure PDF + Paper Book){" "}
-            <span className="ml-2 text-xs bg-pink-400 text-white px-2 py-0.5 rounded">
-              Recommended
-            </span>
-          </button>
+        <div
+          className={`flex justify-center mt-6 ${border("CMD-FORMAT-BUTTONS")}`}
+        >
+          <div className="flex gap-1 p-1 rounded-full border border-gray-300 bg-gray-100">
+            {/* Paper Books */}
+            <button
+              onClick={() => setSelectedFormat("paper")}
+              className={`flex items-center gap-2 px-6 py-2 rounded-full font-medium transition-all
+              ${
+                selectedFormat === "paper"
+                  ? "bg-gradient-to-r from-blue-400 to-pink-400 text-white shadow"
+                  : "text-gray-800 hover:bg-white"
+              }`}
+            >
+              📘 <span>Paper Books</span>
+            </button>
+
+            {/* Secure PDF */}
+            <button
+              onClick={() => setSelectedFormat("pdf")}
+              className={`flex items-center gap-2 px-6 py-4 rounded-full font-medium transition-all
+              ${
+                selectedFormat === "pdf"
+                  ? "bg-gradient-to-r from-blue-400 to-pink-400 text-white shadow"
+                  : "text-gray-800 hover:bg-white"
+              }`}
+            >
+              📄 <span>Secure PDF</span>
+            </button>
+
+            {/* Bundle */}
+            <button
+              onClick={() => setSelectedFormat("bundle")}
+              className={`flex items-center gap-2 px-6 py-2 rounded-full font-medium transition-all
+              ${
+                selectedFormat === "bundle"
+                  ? "bg-gradient-to-r from-blue-400 to-pink-400 text-white shadow"
+                  : "text-gray-800 hover:bg-white"
+              }`}
+            >
+              📦 <span>Bundle (Secure PDF + Paper Book)</span>
+              <span className="ml-1 text-[10px] bg-red-400 text-white px-1.5 py-[1px] rounded-full leading-tight">
+                Recommended
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* CMD-DELIVERY-INFO */}
-        <div className={`flex items-center gap-2 mt-6 text-blue-600 ${border("CMD-DELIVERY-INFO")}`}>
+        <div
+          className={`flex items-center gap-2 mt-6 text-blue-600 ${border(
+            "CMD-DELIVERY-INFO"
+          )}`}
+        >
           <Truck className="w-5 h-5" />
           <span className="text-sm">Delivered in 5–7 Days</span>
         </div>
@@ -109,7 +157,6 @@ export default function Selected_Hero({ debug = false }) {
     </div>
   );
 }
-
 
 //File structure and component tags for reference:
 
