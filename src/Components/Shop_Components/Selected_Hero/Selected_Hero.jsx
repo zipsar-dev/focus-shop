@@ -1,7 +1,7 @@
 import React from "react";
 import { BookOpen, FileLock2, PackageCheck, Truck } from "lucide-react";
 
-export default function Selected_Hero({ debug = true }) {
+export default function Selected_Hero({ debug = false }) {
   // Dev border toggler
   const border = (cmd) =>
     debug ? `border border-dashed border-red-400 p-2 rounded` : "";
