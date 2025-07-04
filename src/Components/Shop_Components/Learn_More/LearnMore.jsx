@@ -65,7 +65,7 @@ export default function LearnMoreSlider() {
   };
 
   return (
-    <div className="bg-white rounded-[12px] p-6 md:p-10 border max-w-[77%] mx-auto">
+    <div className="bg-white rounded-[12px] p-6 md:p-10 border max-w-[76%] mx-auto">
       <div className="flex justify-between items-center mb-6 h-1">
         <h2 className="text-2xl font-bold">Learn more about each subject</h2>
         <span className="text-lg font-medium text-gray-600">
