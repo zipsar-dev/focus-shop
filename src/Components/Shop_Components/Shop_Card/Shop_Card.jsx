@@ -63,7 +63,7 @@ const products = [
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="border rounded-2xl bg-white p-4 flex flex-col sm:flex-row gap-4">
+    <div className="border rounded-[12px] bg-white p-4 flex flex-col sm:flex-row gap-4">
       <div className="w-full sm:w-[160px] shrink-0">
         <img
           src={product.image}
@@ -112,7 +112,7 @@ export default function ShopCard() {
   return (
     <div className="p-6">
       <div
-        className="bg-[#f8f9fa] border border-black rounded-[16px] p-6 w-full max-w-[90rem] mx-auto mb-12"
+        className="bg-[#f8f9fa] border border-black rounded-[16px] p-6 w-full max-w-[77%] mx-auto mb-12"
         style={{
           borderBottomWidth: "6px",
         }}
