@@ -31,6 +31,7 @@ const Hero = () => {
   ];
 
   return (
+    
     <div className="w-[95%] sm:w-[90%] lg:w-[80%] mx-auto min-h-screen flex flex-col lg:flex-row mt-20">
       {/* Left Sidebar - Hidden on screens below 600px */}
       <div className="hidden min-[600px]:block w-full lg:w-[30%] border-t border-gray-400/50 h-fit lg:h-full">
@@ -57,7 +58,7 @@ const Hero = () => {
               ))}
             </ul>
           </div>
-
+              
           {/* Test Series Section */}
           <div className="mt-8 sm:mt-10 font-body px-3 sm:px-5">
             <h1 className="font-bold text-base sm:text-lg">Test Series</h1>

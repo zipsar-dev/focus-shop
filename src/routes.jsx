@@ -9,8 +9,8 @@ import Selected_Study_Metrials from './Pages/Shop/Selected_Study_Metrials/Select
 const AppRoutes = () => {
   return (
     <Routes>
-        <Route path="/" index element={<Shop_Study_Metrials/>} />
-        <Route path='shop' element={<Selected_Study_Metrials />}/>
+        {/* <Route path="/" index element={<Shop_Study_Metrials/>} /> */}
+        <Route path='/' element={<Selected_Study_Metrials />}/>
     </Routes>
   );
 };

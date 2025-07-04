@@ -11,15 +11,26 @@ export default function Selected_Hero({ debug = false }) {
   return (
     <div className="bg-[#fffafc] min-h-screen p-6 md:p-12 font-sans text-gray-800">
       {/* CMD-BREADCRUMB */}
-      <div className={`text-sm text-gray-500 mb-9 mt-6 ml-12 ${border("CMD-BREADCRUMB")}`}>
-        Home / Shop Study Material /{" "}
-        <span className="text-black">CA Foundation Reviewer</span>
+      <div
+        className={`text-sm text-gray-500 mb-9 mt-6 ml-12 ${border(
+          "CMD-BREADCRUMB"
+        )}`}
+      >
+        Shop / <span className="text-black">Last Attempt Kit</span>
       </div>
 
       {/* CMD-HERO-SECTION */}
-      <div className={`flex flex-col lg:flex-row gap-10 ${border("CMD-HERO-SECTION")}`}>
+      <div
+        className={`flex flex-col lg:flex-row gap-10 ${border(
+          "CMD-HERO-SECTION"
+        )}`}
+      >
         {/* CMD-IMAGE-SECTION */}
-        <div className={`flex-1 flex justify-center items-center ${border("CMD-IMAGE-SECTION")}`}>
+        <div
+          className={`flex-1 flex justify-center items-center ${border(
+            "CMD-IMAGE-SECTION"
+          )}`}
+        >
           <img
             src="/public/Images/books-hero-sample.jpg"
             alt="CA Foundation Reviewer"
@@ -37,12 +48,14 @@ export default function Selected_Hero({ debug = false }) {
             <li className="flex gap-3 items-start">
               <BookOpen className="mt-1 text-blue-500" />
               <div>
-                <span className="font-semibold text-gray-700">Smart Study</span> › Hard Study
+                <span className="font-semibold text-gray-700">Smart Study</span>{" "}
+                › Hard Study
                 <br />
                 <span className="text-sm text-gray-600">
-                  Solve more questions in less time with our chapter-wise and topic-wise bifurcation.
-                  Focus on key areas, identify your weak spots, and strengthen them with targeted practice.
-                  Efficient and effective, every step of the way.
+                  Solve more questions in less time with our chapter-wise and
+                  topic-wise bifurcation. Focus on key areas, identify your weak
+                  spots, and strengthen them with targeted practice. Efficient
+                  and effective, every step of the way.
                 </span>
               </div>
             </li>
@@ -50,11 +63,16 @@ export default function Selected_Hero({ debug = false }) {
             <li className="flex gap-3 items-start">
               <FileLock2 className="mt-1 text-red-400" />
               <div>
-                <span className="text-red-500 font-medium">Build your confidence</span> from day 1
+                <span className="text-red-500 font-medium">
+                  Build your confidence
+                </span>{" "}
+                from day 1
                 <br />
                 <span className="text-sm text-gray-600">
-                  Start solving ICAI-grade questions right from the beginning, formatted as they will appear on the exam.
-                  This strategy builds confidence and ensures you're ready for any challenge on exam day.
+                  Start solving ICAI-grade questions right from the beginning,
+                  formatted as they will appear on the exam. This strategy
+                  builds confidence and ensures you're ready for any challenge
+                  on exam day.
                 </span>
               </div>
             </li>
@@ -62,10 +80,12 @@ export default function Selected_Hero({ debug = false }) {
             <li className="flex gap-3 items-start">
               <PackageCheck className="mt-1 text-black" />
               <div>
-                <span className="text-pink-500 font-medium">A better way</span> to learn
+                <span className="text-pink-500 font-medium">A better way</span>{" "}
+                to learn
                 <br />
                 <span className="text-sm text-gray-600">
-                  Refresh essential concepts before each chapter. Tackle questions with confidence and build your skills efficiently,
+                  Refresh essential concepts before each chapter. Tackle
+                  questions with confidence and build your skills efficiently,
                   saving time and optimizing your learning process.
                 </span>
               </div>
@@ -77,59 +97,54 @@ export default function Selected_Hero({ debug = false }) {
       {/* CMD-MATERIAL-FORMAT */}
       <div className={`mt-12 ${border("CMD-MATERIAL-FORMAT")}`}>
         {/* Title Centered */}
-        <div className="text-center mb-4">
-          <h2 className="text-lg font-semibold">CHOOSE MATERIAL FORMAT</h2>
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold">CHOOSE MATERIAL FORMAT</h2>
         </div>
 
         <div className="flex flex-col items-center gap-4">
           {/* CMD-FORMAT-BUTTONS */}
-          <div className={`w-full sm:w-[80%] ${border("CMD-FORMAT-BUTTONS")}`}>
-            <div className="flex flex-col sm:flex-row justify-between gap-2 p-1 rounded-full border border-gray-300 bg-gray-100 w-full h-18">
-              {/* Paper Books */}
+          <div className="w-full sm:w-[80%]">
+            <div className="flex flex-col sm:flex-row justify-between gap-2 p-1 rounded-[16px] border border-t-[2px] border-l-[2px] border-r-[2px] border-black border-b-[6px] bg-white w-full h-20">
+              {/* Lite Kit */}
               <button
-                onClick={() => setSelectedFormat("paper")}
-                className={`flex-1 flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all justify-center ${
-                  selectedFormat === "paper"
-                    ? "bg-gradient-to-r from-blue-400 to-pink-400 text-white shadow"
-                    : "text-gray-800 hover:bg-white"
+                onClick={() => setSelectedFormat("Lite Kit")}
+                className={`flex-1 flex items-center gap-2 px-4 py-2 rounded-[14px] font-medium transition-all justify-center ${
+                  selectedFormat === "Lite Kit"
+                    ? "bg-[#4F7BF8] text-white shadow border border-black text-2xl"
+                    : "text-black"
                 }`}
               >
-                📘 <span>Paper Books</span>
+                 <span>Lite Kit</span>
               </button>
 
-              {/* Secure PDF */}
+              {/* Essentials Kit */}
               <button
-                onClick={() => setSelectedFormat("pdf")}
-                className={`flex-1 flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all justify-center ${
-                  selectedFormat === "pdf"
-                    ? "bg-gradient-to-r from-blue-400 to-pink-400 text-white shadow"
-                    : "text-gray-800 hover:bg-white"
+                onClick={() => setSelectedFormat("Essentials Kit")}
+                className={`flex-1 flex items-center gap-2 px-4 py-2 rounded-[14px] font-medium transition-all justify-center ${
+                  selectedFormat === "Essentials Kit"
+                    ? "bg-[#4F7BF8] text-white shadow border border-black text-2xl"
+                    : "text-black"
                 }`}
               >
-                📄 <span>Secure PDF</span>
+                 <span>Essentials Kit</span>
               </button>
 
-              {/* Bundle */}
+              {/* Pro Kit */}
               <button
-                onClick={() => setSelectedFormat("bundle")}
-                className={`flex-1 flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all justify-center ${
-                  selectedFormat === "bundle"
-                    ? "bg-gradient-to-r from-blue-400 to-pink-400 text-white shadow"
-                    : "text-gray-800 hover:bg-white"
+                onClick={() => setSelectedFormat("Pro Kit")}
+                className={`flex-1 flex items-center gap-2 px-4 py-2 rounded-[14px] font-medium transition-all justify-center ${
+                  selectedFormat === "Pro Kit"
+                    ? "bg-[#4F7BF8] text-white shadow border border-black text-2xl"
+                    : "text-black"
                 }`}
               >
-                📦 <span>Bundle (Secure PDF + Paper Book)</span>
-                <span className="ml-1 text-[10px] bg-red-400 text-white px-1.5 py-[1px] rounded-full leading-tight">
-                  Recommended
-                </span>
+                 <span>Pro Kit</span>
               </button>
             </div>
           </div>
 
           {/* CMD-DELIVERY-INFO */}
-          <div
-            className={`flex items-center gap-2 text-blue-600 ${border("CMD-DELIVERY-INFO")}`}
-          >
+          <div className="flex items-center gap-2 text-blue-600">
             <Truck className="w-6 h-6" />
             <span className="text-sm">Delivered in 5–7 Days</span>
           </div>
