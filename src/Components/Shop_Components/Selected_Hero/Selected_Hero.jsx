@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BookOpen, FileLock2, PackageCheck, Truck } from "lucide-react";
 
 export default function Selected_Hero({ debug = false }) {
-  const [selectedFormat, setSelectedFormat] = useState("paper");
+  const [selectedFormat, setSelectedFormat] = useState("Lite Kit");
 
   // Dev border toggler
   const border = (cmd) =>
@@ -41,7 +41,7 @@ export default function Selected_Hero({ debug = false }) {
         {/* CMD-TEXT-CONTENT */}
         <div className={`flex-1 ${border("CMD-TEXT-CONTENT")}`}>
           <h1 className="text-3xl font-semibold mb-2">Last Attempt Kit</h1>
-          <p className="text-red-500 font-medium mb-4">Sept'25 & Jan'26</p>
+          <p className="text-blue-500 font-medium mb-4">Sept'25 & Jan'26</p>
 
           {/* CMD-BULLET-POINTS */}
           <ul className={`space-y-4 mb-10 ${border("CMD-BULLET-POINTS")}`}>
@@ -63,7 +63,7 @@ export default function Selected_Hero({ debug = false }) {
             <li className="flex gap-3 items-start">
               <FileLock2 className="mt-1 text-red-400" />
               <div>
-                <span className="text-red-500 font-medium">
+                <span className="text-green-500 font-medium">
                   Build your confidence
                 </span>{" "}
                 from day 1
@@ -104,7 +104,7 @@ export default function Selected_Hero({ debug = false }) {
         <div className="flex flex-col items-center gap-4">
           {/* CMD-FORMAT-BUTTONS */}
           <div className="w-full sm:w-[80%]">
-            <div className="flex flex-col sm:flex-row justify-between gap-2 p-1 rounded-[16px] border border-t-[2px] border-l-[2px] border-r-[2px] border-black border-b-[6px] bg-white w-full h-20">
+            <div className="flex flex-col sm:flex-row justify-between gap-2 p-1 rounded-[16px] border border-t-[1px] border-l-[1px] border-r-[4px] border-black border-b-[6px] bg-white w-full h-20">
               {/* Lite Kit */}
               <button
                 onClick={() => setSelectedFormat("Lite Kit")}
