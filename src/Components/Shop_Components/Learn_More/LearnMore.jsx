@@ -34,7 +34,7 @@ const subjects = [
     samplePDF: "#",
     image: "public/Images/book-card-sample.jpg",
     color: "border-yellow-400",
-  },
+  }, 
 ];
 
 export default function LearnMoreSlider() {
