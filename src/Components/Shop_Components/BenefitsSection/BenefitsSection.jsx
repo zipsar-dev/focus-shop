@@ -8,14 +8,14 @@ import {
 
 export default function BenefitsSection() {
   return (
-    <div className="bg-white border border-black rounded-[12px] p-6 md:p-10  max-w-[76%] mx-auto my-10 ">
+    <div className="bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-[32px] p-6 md:p-10 max-w-[76%] mx-auto my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         {/* Left: Logo + Heading */}
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-semibold mb-2">Benefits of using the</h2>
           <h3 className="text-2xl font-bold text-blue-600">Focus Reviewer</h3>
           <img
-            src="public\Images\logo.png"
+            src="public/Images/logo.png"
             alt="Vivitsu Logo"
             className="w-40 mx-auto md:mx-0 mt-4"
           />

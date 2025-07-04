@@ -63,7 +63,7 @@ const products = [
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="border rounded-[12px] bg-white p-4 flex flex-col sm:flex-row gap-4">
+    <div className="rounded-[12px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] p-4 flex flex-col sm:flex-row gap-4 border border-gray-200">
       <div className="w-full sm:w-[160px] shrink-0">
         <img
           src={product.image}
@@ -112,10 +112,7 @@ export default function ShopCard() {
   return (
     <div className="p-6">
       <div
-        className="bg-[#f8f9fa] border border-black rounded-[16px] p-6 w-full max-w-[77%] mx-auto mb-12"
-        style={{
-          borderBottomWidth: "6px",
-        }}
+        className="bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-[32px] p-6 w-full max-w-[77%] mx-auto mb-12"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {products.map((product, index) => (

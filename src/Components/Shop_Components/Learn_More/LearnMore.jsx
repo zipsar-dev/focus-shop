@@ -6,7 +6,7 @@ const subjects = [
     paper: "PAPER 1",
     title: "Accounting",
     description: [
-      "Learn Basics and test your conceptual knowledge.",
+      "Learn basics and test your conceptual knowledge.",
       "Start right as your building base to the CA journey.",
     ],
     shopLink: "#",
@@ -56,57 +56,63 @@ export default function LearnMoreSlider() {
   const [index, setIndex] = useState(0);
   const subject = subjects[index];
 
-  const goNext = () => {
-    setIndex((prev) => (prev + 1) % subjects.length);
-  };
-
-  const goPrev = () => {
+  const goNext = () => setIndex((prev) => (prev + 1) % subjects.length);
+  const goPrev = () =>
     setIndex((prev) => (prev - 1 + subjects.length) % subjects.length);
-  };
 
   return (
-    <div className="bg-white rounded-[12px] p-6 md:p-10 border max-w-[76%] mx-auto">
-      <div className="flex justify-between items-center mb-6 h-1">
-        <h2 className="text-2xl font-bold">Learn more about each subject</h2>
-        <span className="text-lg font-medium text-gray-600">
+    <div className="bg-white shadow-lg rounded-[24px] p-6 md:p-10 max-w-[76%] mx-auto mt-10">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800">
+          Learn more about each subject
+        </h2>
+        <span className="text-sm font-medium text-gray-500">
           {index + 1}/{subjects.length}
         </span>
       </div>
 
-      <div className="relative flex items-center border-t pt-6 min-h-[320px] mt-8">
+      <div className="relative flex items-center min-h-[280px]">
         {/* Left Arrow */}
-        <button onClick={goPrev} className="absolute left-0 ml-2 z-10">
-          <ChevronLeft className="w-7 h-7 text-gray-600 hover:text-black" />
+        <button
+          onClick={goPrev}
+          className="absolute left-0 -ml-2 z-10 p-2 hover:bg-gray-100 rounded-full"
+        >
+          <ChevronLeft className="w-6 h-6 text-gray-600" />
         </button>
 
-        <div className="flex flex-col md:flex-row w-full justify-between gap-8 px-4 md:px-12">
-          {/* Left Content */}
-          <div className="flex-1 text-gray-800 px-2 md:px-6 pt-2 pb-4 flex flex-col justify-center">
-            <p className="text-sm font-semibold text-gray-500 mb-1">{subject.paper}</p>
-            <h3 className="text-2xl font-semibold mb-3">{subject.title}</h3>
-            <ul className="list-disc ml-6 space-y-2 mb-5 leading-relaxed text-[17px]">
+        {/* Content */}
+        <div className="flex flex-col md:flex-row w-full items-center gap-8 px-6 md:px-12">
+          {/* Text Content */}
+          <div className="flex-1 w-full ml-15">
+            <p className="text-[24px] font-semibold text-gray-400 mb-1">
+              {subject.paper}
+            </p>
+            <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+              {subject.title}
+            </h3>
+            <ul className="list-disc ml-4 mb-4 space-y-2 text-gray-700 text-[18px]">
               {subject.description.map((line, i) => (
                 <li key={i}>{line}</li>
               ))}
             </ul>
             <a
               href={subject.shopLink}
-              className="text-base underline font-semibold hover:text-blue-600"
+              className="inline-block text-sm font-semibold text-blue-600 hover:underline"
             >
               SHOP NOW
             </a>
           </div>
 
-          {/* Right Image */}
-          <div className="flex-1 flex flex-col items-center justify-center py-4">
+          {/* Image Section */}
+          <div className="flex flex-col items-center mr-15">
             <img
               src={subject.image}
               alt={subject.title}
-              className="w-48 md:w-56 lg:w-64 mx-auto mb-3 rounded-md shadow-md"
+              className="w-60 md:w-72 rounded-lg shadow-md mb-2"
             />
             <a
               href={subject.samplePDF}
-              className="text-sm text-gray-700 underline"
+              className="text-sm text-gray-500 hover:underline"
               target="_blank"
               rel="noreferrer"
             >
@@ -116,20 +122,24 @@ export default function LearnMoreSlider() {
         </div>
 
         {/* Right Arrow */}
-        <button onClick={goNext} className="absolute right-0 mr-2 z-10">
-          <ChevronRight className="w-8 h-8 text-gray-600 hover:text-black" />
+        <button
+          onClick={goNext}
+          className="absolute right-0 -mr-2 z-10 p-2 hover:bg-gray-100 rounded-full"
+        >
+          <ChevronRight className="w-6 h-6 text-gray-600" />
         </button>
       </div>
 
-      {/* Indicator Dots */}
-      <div className="flex justify-end mt-2 space-x-2">
+      {/* Dots */}
+      <div className="flex justify-center mt-6 gap-2">
         {subjects.map((sub, i) => (
           <span
             key={i}
-            className={`w-5 h-3 border-2 rounded-sm transition-all duration-200 ${
-              i === index ? sub.color : "border-gray-300"
+            className={`w-4 h-2 rounded-full transition-all duration-300 ${
+              i === index ? `${sub.color} bg-blue-400` : "bg-blue-300"
             }`}
-          ></span>
+            style={{ backgroundColor: i === index ? undefined : "#e5e7eb" }}
+          />
         ))}
       </div>
     </div>
