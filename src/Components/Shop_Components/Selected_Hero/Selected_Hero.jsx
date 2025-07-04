@@ -8,7 +8,7 @@ export default function Selected_Hero({ debug = false }) {
     debug ? `border border-dashed border-red-400 p-2 rounded` : "";
 
   return (
-    <div className="relative bg-[#fffafc] min-h-screen overflow-hidden font-sans text-gray-800">
+    <div className="relative bg-[#FAFBFFFF] min-h-screen overflow-hidden font-sans text-gray-800">
       {/* Grid Background Layer */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"

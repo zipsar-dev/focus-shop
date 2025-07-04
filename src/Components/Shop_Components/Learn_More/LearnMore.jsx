@@ -3,11 +3,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const subjects = [
   {
-    paper: "PAPER 1",
-    title: "Accounting",
+    paper: "",
+    title: "Efficient Learning for Maximum Impact",
     description: [
-      "Learn basics and test your conceptual knowledge.",
-      "Start right as your building base to the CA journey.",
+      "With the Last Attempt Kit, dive straight into solving targeted questions, organized by chapters and topics. This method allows you to identify your weak points early, so you can focus your efforts where it matters most. Save time, study smarter, and be ready for any exam challenge."
     ],
     shopLink: "#",
     samplePDF: "#",
@@ -15,11 +14,10 @@ const subjects = [
     color: "border-blue-800",
   },
   {
-    paper: "PAPER 2",
-    title: "Business Laws",
+    paper: "",
+    title: "Business LawsConfidence that Builds Over Time",
     description: [
-      "Understand basic business laws through Q&A.",
-      "Learn to write answers in a structured way.",
+      "No more waiting until the last minute. With our practice-focused approach, you start solving ICAIgrade questions from day one. Practice with questions formatted just like the exam to gain the confidence you need to approach your exams without fear. "
     ],
     shopLink: "#",
     samplePDF: "#",
@@ -27,28 +25,15 @@ const subjects = [
     color: "border-red-500",
   },
   {
-    paper: "PAPER 3",
-    title: "Quantitative Aptitude",
+    paper: "",
+    title: "A Customized Approach to Success ",
     description: [
-      "Sharpen your logic and MCQ solving speed.",
-      "Practice-based learning using past year Qs.",
+      "Each section of the Last Attempt Kit is structured to maximize your learning. With detailed solutions, certified evaluations, and personalized strategies, you’ll strengthen your skills and prepare efficiently. Stay ahead of the curve by revisiting and reinforcing your weak areas for an all-rounded preparation. "
     ],
     shopLink: "#",
     samplePDF: "#",
     image: "public/Images/book-card-sample.jpg",
     color: "border-yellow-400",
-  },
-  {
-    paper: "PAPER 4",
-    title: "Business Economics",
-    description: [
-      "Understand market behavior with concept clarity.",
-      "Practice numerical and theory questions.",
-    ],
-    shopLink: "#",
-    samplePDF: "#",
-    image: "public/Images/book-card-sample.jpg",
-    color: "border-pink-500",
   },
 ];
 
@@ -64,7 +49,7 @@ export default function LearnMoreSlider() {
     <div className="bg-white shadow-lg rounded-[24px] p-6 md:p-10 max-w-[76%] mx-auto mt-10">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold text-gray-800">
-          Learn more about each subject
+          Last Attempt Kit 
         </h2>
         <span className="text-sm font-medium text-gray-500">
           {index + 1}/{subjects.length}
