@@ -34,7 +34,7 @@ const subjects = [
     samplePDF: "#",
     image: "public/Images/book-card-sample.jpg",
     color: "border-yellow-400",
-  }, 
+  },
 ];
 
 export default function LearnMoreSlider() {
@@ -49,7 +49,7 @@ export default function LearnMoreSlider() {
     <div className="bg-white shadow-lg rounded-[24px] p-6 md:p-10 max-w-[76%] mx-auto mt-10">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold text-gray-800">
-          Last Attempt Kit 
+          Last Attempt Kit
         </h2>
         <span className="text-sm font-medium text-gray-500">
           {index + 1}/{subjects.length}
@@ -57,29 +57,19 @@ export default function LearnMoreSlider() {
       </div>
 
       <div className="relative flex items-center min-h-[280px]">
-        {/* Left Arrow */}
-        <button
-          onClick={goPrev}
-          className="absolute left-0 -ml-2 z-10 p-2 hover:bg-gray-100 rounded-full"
-        >
-          <ChevronLeft className="w-6 h-6 text-gray-600" />
-        </button>
-
         {/* Content */}
-        <div className="flex flex-col md:flex-row w-full items-center gap-8 px-6 md:px-12">
+        <div className="flex flex-col md:flex-row w-full items-center gap-8 px-4 sm:px-6 md:px-12">
           {/* Text Content */}
-          <div className="flex-1 w-full ml-15">
-            <p className="text-[24px] font-semibold text-gray-400 mb-1">
-              {subject.paper}
-            </p>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+          <div className="w-full md:w-1/2 text-center">
+            <p className="text-lg text-gray-400 mb-2">{subject.paper}</p>
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
               {subject.title}
             </h3>
-            <ul className="list-disc ml-4 mb-4 space-y-2 text-gray-700 text-[18px]">
-              {subject.description.map((line, i) => (
-                <li key={i}>{line}</li>
-              ))}
-            </ul>
+            {/* <ul className="list-disc list-inside mb-4 space-y-2 text-gray-700 text-[16px] sm:text-[18px]"> */}
+            {subject.description.map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+            {/* </ul> */}
             <a
               href={subject.shopLink}
               className="inline-block text-sm font-semibold text-blue-600 hover:underline"
@@ -89,11 +79,11 @@ export default function LearnMoreSlider() {
           </div>
 
           {/* Image Section */}
-          <div className="flex flex-col items-center mr-15">
+          <div className="w-full md:w-1/2 flex flex-col items-center">
             <img
               src={subject.image}
               alt={subject.title}
-              className="w-60 md:w-72 rounded-lg shadow-md mb-2"
+              className="w-52 sm:w-60 md:w-72 rounded-lg shadow-md mb-2"
             />
             <a
               href={subject.samplePDF}
@@ -106,10 +96,18 @@ export default function LearnMoreSlider() {
           </div>
         </div>
 
+        {/* Left Arrow */}
+        <button
+          onClick={goPrev}
+          className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 hover:bg-gray-100 rounded-full"
+        >
+          <ChevronLeft className="w-6 h-6 text-gray-600" />
+        </button>
+
         {/* Right Arrow */}
         <button
           onClick={goNext}
-          className="absolute right-0 -mr-2 z-10 p-2 hover:bg-gray-100 rounded-full"
+          className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 hover:bg-gray-100 rounded-full"
         >
           <ChevronRight className="w-6 h-6 text-gray-600" />
         </button>
@@ -120,9 +118,8 @@ export default function LearnMoreSlider() {
         {subjects.map((sub, i) => (
           <span
             key={i}
-            className={`w-4 h-2 rounded-full transition-all duration-300 ${
-              i === index ? `${sub.color} bg-blue-400` : "bg-blue-300"
-            }`}
+            className={`w-4 h-2 rounded-full transition-all duration-300 ${i === index ? `${sub.color} bg-blue-400` : "bg-blue-300"
+              }`}
             style={{ backgroundColor: i === index ? undefined : "#e5e7eb" }}
           />
         ))}

@@ -46,7 +46,7 @@ const Nav = () => {
       <div className='flex items-center justify-center gap-3 sm:gap-5 font-secondary'>
         <button
           onClick={handleCartClick}
-          className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2 relative"
+          className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2 relative cursor-pointer"
         >
           <ShoppingCart size={18} />
           <span className="text-xs sm:text-sm">Go to Cart</span>
