@@ -5,16 +5,25 @@ import { useNavigate } from 'react-router-dom';
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
-  const cartCount = 4; // Replace with dynamic cart count if needed
+
+  // ⚠ Replace this with context-based cart count later
+  const cartCount = 0;
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleCartClick = () => {
+    if (cartCount > -1) {
+      navigate("/cart");
+    } else {
+      alert("Your cart is empty. Please add items to proceed.");
+    }
+  };
 
   return (
     <div
@@ -22,7 +31,7 @@ const Nav = () => {
         isScrolled ? 'top-4' : 'top-10'
       }`}
     >
-      {/* Left Section - Logo */}
+      {/* Logo */}
       <h1 onClick={() => navigate('/')}>
         <img
           src='public/Images/logo.png'
@@ -31,21 +40,20 @@ const Nav = () => {
         />
       </h1>
 
-      {/* Right Section - Cart Button */}
+      {/* Cart Button */}
       <div className='flex items-center justify-center gap-3 sm:gap-5 font-secondary'>
         <button
-  onClick={() => Navigate("/cart")}
-  className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2"
->
-  <ShoppingCart size={18} />
-  <span className="text-xs sm:text-sm">Go to Cart</span>
-  {cartCount > 0 && (
-    <span className="ml-1 text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full">
-      {cartCount}
-    </span>
-  )}
-</button>
-
+          onClick={handleCartClick}
+          className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2"
+        >
+          <ShoppingCart size={18} />
+          <span className="text-xs sm:text-sm">Go to Cart</span>
+          {cartCount > 0 && (
+            <span className="ml-1 text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full">
+              {cartCount}
+            </span>
+          )}
+        </button>
       </div>
     </div>
   );

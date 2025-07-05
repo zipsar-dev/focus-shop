@@ -79,11 +79,10 @@ export default function ShopCard() {
     setCart((prev) => ({ ...prev, [title]: Math.max((prev[title] || 0) - 1, 0) }));
   };
 
-  const handleBuy = () => {
-    const hasItems = Object.values(cart).some((qty) => qty > 0);
-    if (!hasItems) return alert("Please add at least one item.");
-    navigate("/cart", { state: { cart } });
-  };
+const handleBuy = () => {
+  navigate("/cart", { state: { cart } });
+};
+
 
   return (
     <div className="p-4 sm:p-6">
