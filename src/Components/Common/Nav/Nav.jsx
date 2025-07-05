@@ -1,13 +1,15 @@
 import { ShoppingCart } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../../context/CartContext';
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { cart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  // ⚠ Replace this with context-based cart count later
-  const cartCount = 0;
+  // 🧠 Calculate total count from cart context
+  const cartCount = Object.values(cart).reduce((acc, qty) => acc + qty, 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +20,7 @@ const Nav = () => {
   }, []);
 
   const handleCartClick = () => {
-    if (cartCount > -1) {
+    if (cartCount > 0) {
       navigate("/cart");
     } else {
       alert("Your cart is empty. Please add items to proceed.");
@@ -44,12 +46,12 @@ const Nav = () => {
       <div className='flex items-center justify-center gap-3 sm:gap-5 font-secondary'>
         <button
           onClick={handleCartClick}
-          className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2"
+          className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2 relative"
         >
           <ShoppingCart size={18} />
           <span className="text-xs sm:text-sm">Go to Cart</span>
           {cartCount > 0 && (
-            <span className="ml-1 text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full">
+            <span className="absolute -top-1 -right-2 text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-full">
               {cartCount}
             </span>
           )}

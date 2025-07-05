@@ -47,7 +47,7 @@ const formats = [
 
 export default function CompareFormats() {
   return (
-    <div className="bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-[32px] p-8 md:p-10 max-w-[76%] mx-auto my-12">
+    <div className="compare-formats bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-[32px] p-8 md:p-10 max-w-[76%] mx-auto my-12">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
         Compare Material Formats
       </h2>

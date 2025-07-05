@@ -13,7 +13,7 @@ const Metrials_Cards = ({ data }) => {
     navigate('/shop')
   }
   return (
-    <div className="w-full max-w-[320px] mt-5 font-body">
+    <div className="material-cards w-full max-w-[320px] mt-5 font-body">
       {/* Image Container */}
       <div className="w-full bg-gray-400/50 rounded-lg mb-4 flex-center">
         <img src={mockImg} alt="Image" className="" />

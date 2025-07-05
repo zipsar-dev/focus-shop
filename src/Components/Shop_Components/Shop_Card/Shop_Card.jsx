@@ -1,8 +1,8 @@
 // ShopCard.jsx
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import { CartContext } from "../../../context/CartContext";
 
 const products = [
   {
@@ -37,7 +37,7 @@ const products = [
 ];
 
 const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
-  <div className="rounded-[16px] bg-white shadow-md p-4 flex flex-col sm:flex-row gap-6 border border-gray-200 transition hover:shadow-lg">
+  <div className="product-card rounded-[16px] bg-white shadow-md p-4 flex flex-col sm:flex-row gap-6 border border-gray-200 transition hover:shadow-lg">
     <div className="w-full sm:w-[160px] shrink-0">
       <img src={product.image} alt={product.title} className="w-full h-40 object-cover rounded-lg" />
     </div>
@@ -68,24 +68,15 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
 );
 
 export default function ShopCard() {
-  const [cart, setCart] = useState({});
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const handleAdd = (title) => {
-    setCart((prev) => ({ ...prev, [title]: (prev[title] || 0) + 1 }));
+  const handleBuy = () => {
+    navigate("/cart");
   };
-
-  const handleRemove = (title) => {
-    setCart((prev) => ({ ...prev, [title]: Math.max((prev[title] || 0) - 1, 0) }));
-  };
-
-const handleBuy = () => {
-  navigate("/cart", { state: { cart } });
-};
-
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="shop-card p-4 sm:p-6">
       <div className="bg-white shadow-md rounded-[32px] p-6 w-full max-w-[90%] sm:max-w-[77%] mx-auto mb-6">
         <h2 className="text-2xl font-semibold mb-6 text-center sm:text-left">Shop Study Kits</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -94,8 +85,8 @@ const handleBuy = () => {
               key={index}
               product={product}
               quantity={cart[product.title] || 0}
-              onAdd={() => handleAdd(product.title)}
-              onRemove={() => handleRemove(product.title)}
+              onAdd={() => addToCart(product.title)}
+              onRemove={() => removeFromCart(product.title)}
             />
           ))}
         </div>
