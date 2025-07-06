@@ -32,10 +32,8 @@ export default function CartPage() {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      {/* New Nav */}
       <CartNav />
 
-      {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8">
         {cartItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4 bg-white rounded-xl shadow text-center">
@@ -57,54 +55,63 @@ export default function CartPage() {
                 <h3 className="text-lg font-semibold mb-4">
                   Items in cart ({cartItems.length})
                 </h3>
+
                 {cartItems.map(([title, qty]) => (
-                  <div key={title} className="flex items-center gap-4 mb-4 border-b pb-4">
-                    <img
-                      src={productDetails[title].image}
-                      alt={title}
-                      className="w-20 h-24 object-cover rounded-lg border"
-                    />
-                    <div className="flex-1">
+                  <div
+                    key={title}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b pb-4"
+                  >
+                    {/* Name */}
+                    <div className="flex items-center gap-4 min-w-0 flex-1">
+                      <img
+                        src={productDetails[title].image}
+                        alt={title}
+                        className="w-16 h-20 object-cover rounded-lg border"
+                      />
                       <p className="font-semibold text-sm">{title}</p>
-                      {/* <p className="text-xs text-blue-500 mt-1">PRINTED BOOK</p> */}
-                      <div className="flex items-center mt-2 gap-2">
-                        <button
-                          onClick={() => {
-                            const newQty = qty - 1;
-                            if (newQty <= 0) {
-                              deleteFromCart(title);
-                            } else {
-                              removeFromCart(title);
-                            }
-                          }}
-                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300 cursor-pointer"
-                        >
-                          −
-                        </button>
-                        <span className="text-sm">{qty}</span>
-                        <button
-                          onClick={() => addToCart(title)}
-                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300 cursor-pointer"
-                        >
-                          +
-                        </button>
-                        <button
-                          onClick={() => deleteFromCart(title)}
-                          className="ml-4 text-red-500 text-sm hover:underline cursor-pointer"
-                        >
-                          <Trash2 size={16} />
-                        </button>
-                      </div>
                     </div>
-                    <p className="text-sm font-semibold">
-                      ₹ {productDetails[title].price * qty}
-                    </p>
+
+                    {/* Price */}
+                    <div className="text-sm font-semibold text-gray-800 min-w-[70px] text-right">
+                      ₹ {productDetails[title].price}
+                    </div>
+
+                    {/* Quantity + Delete */}
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          const newQty = qty - 1;
+                          if (newQty <= 0) {
+                            deleteFromCart(title);
+                          } else {
+                            removeFromCart(title);
+                          }
+                        }}
+                        className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
+                      >
+                        −
+                      </button>
+                      <span className="text-sm w-6 text-center">{qty}</span>
+                      <button
+                        onClick={() => addToCart(title)}
+                        className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
+                      >
+                        +
+                      </button>
+                      <button
+                        onClick={() => deleteFromCart(title)}
+                        className="ml-2 text-red-500 hover:underline text-sm"
+                        title="Remove Item"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Summary */}
+            {/* Order Summary */}
             <div className="w-[90%] lg:w-full bg-white p-6 rounded-xl shadow space-y-6">
               <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
               <div className="flex justify-between text-sm">
