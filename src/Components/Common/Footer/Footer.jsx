@@ -9,10 +9,7 @@ export default function Footer() {
           {/* Company Info Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-sm"></div>
-              </div>
-              <h2 className="text-xl font-bold text-gray-900">FOCUS</h2>
+              <img src="public\Images\logo.png" alt="Company Logo" className="h-12" />
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
               Providing CA students with precise, high-quality question banks and reviewers. Dedicated to spreading knowledge and supporting your success.
@@ -72,10 +69,10 @@ export default function Footer() {
                 <p>Monday to Saturday</p>
               </div>
               <div className="space-y-1">
-                <p>9619822135 / 7623822135</p>
+                <p>960254698 / 7612121211</p>
                 <p>
                   <a href="mailto:info@thevivitsu.com" className="text-blue-600 hover:text-blue-800 transition-colors">
-                    info@thevivitsu.com
+                    info@focus.com
                   </a>
                 </p>
               </div>
