@@ -72,8 +72,13 @@ export default function CartPage() {
                     />
                     <div className="flex-1 flex flex-col justify-between gap-2">
                       <div>
-                        <p className="font-semibold text-sm truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]">
-                          {item.title}
+                        <p
+                          className="font-semibold text-sm truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]"
+                          title={item.title}
+                        >
+                          {item.title.length > 20
+                            ? item.title.slice(0, 20) + "..."
+                            : item.title}
                         </p>
                         <p className="text-sm text-gray-700 mt-1">₹ {item.price}</p>
                       </div>

@@ -15,8 +15,11 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
     </div>
     <div className="flex-1 flex flex-col justify-between gap-2">
       <div>
-        <h3 className="text-lg font-semibold truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]">
-          {product.title}
+        <h3
+          className="text-lg font-semibold truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]"
+          title={product.title}
+        >
+          {product.title.length > 20 ? product.title.slice(0, 20) + "..." : product.title}
         </h3>
 
         <p className="text-gray-600 text-sm mt-1">{product.description}</p>
