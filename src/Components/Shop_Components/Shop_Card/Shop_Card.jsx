@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
-import products from '../../../data/products';
+import products from "../../../data/products";
 
 const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
   <div className="product-card rounded-[16px] bg-white shadow-md p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 border border-gray-200 transition hover:shadow-lg hover:scale-[1.01] duration-200">
@@ -15,7 +15,10 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
     </div>
     <div className="flex-1 flex flex-col justify-between gap-2">
       <div>
-        <h3 className="text-lg font-semibold">{product.title}</h3>
+        <h3 className="text-lg font-semibold truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]">
+          {product.title}
+        </h3>
+
         <p className="text-gray-600 text-sm mt-1">{product.description}</p>
 
         {product.bulletPoints && (
@@ -33,7 +36,9 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
         )}
 
         {product.offer && (
-          <p className="text-red-500 text-xs mt-1 font-medium">{product.offer}</p>
+          <p className="text-red-500 text-xs mt-1 font-medium">
+            {product.offer}
+          </p>
         )}
       </div>
 
