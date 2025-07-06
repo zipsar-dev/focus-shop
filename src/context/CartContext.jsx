@@ -13,25 +13,31 @@ export const CartProvider = ({ children }) => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
-    const addToCart = (title) => {
+    const addToCart = (id) => {
         setCart((prev) => ({
             ...prev,
-            [title]: (prev[title] || 0) + 1,
+            [id]: (prev[id] || 0) + 1,
         }));
     };
 
-    const removeFromCart = (title) => {
-        setCart((prev) => ({
-            ...prev,
-            [title]: Math.max((prev[title] || 0) - 1, 0),
-        }));
-    };
-
-    const deleteFromCart = (title) => {
+    const removeFromCart = (id) => {
         setCart((prev) => {
-            const updatedCart = { ...prev };
-            delete updatedCart[title];
-            return updatedCart;
+            const newQty = Math.max((prev[id] || 0) - 1, 0);
+            const updated = { ...prev };
+            if (newQty === 0) {
+                delete updated[id];
+            } else {
+                updated[id] = newQty;
+            }
+            return updated;
+        });
+    };
+
+    const deleteFromCart = (id) => {
+        setCart((prev) => {
+            const updated = { ...prev };
+            delete updated[id];
+            return updated;
         });
     };
 

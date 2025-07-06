@@ -3,29 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import { Trash2 } from "lucide-react";
 import CartNav from "../../Common/CartNav/CartNav";
-
-const productDetails = {
-  "Combo – All Subjects": {
-    price: 1800,
-    image: "/Images/book-card-sample.jpg",
-  },
-  Accounting: { price: 500, image: "/Images/book-card-sample.jpg" },
-  "Business Laws": { price: 400, image: "/Images/book-card-sample.jpg" },
-  "Quantitative Aptitude": {
-    price: 500,
-    image: "/Images/book-card-sample.jpg",
-  },
-};
+import products from "../../../data/products"; // 👈 Make sure this path is correct
 
 export default function CartPage() {
   const { cart, addToCart, removeFromCart, deleteFromCart } = useContext(CartContext);
   const navigate = useNavigate();
-  const cartItems = Object.entries(cart).filter(([_, qty]) => qty > 0);
 
-  const subtotal = cartItems.reduce(
-    (sum, [title, qty]) => sum + productDetails[title].price * qty,
-    0
-  );
+  const cartItems = Object.entries(cart)
+    .filter(([_, qty]) => qty > 0)
+    .map(([id, qty]) => {
+      const product = products.find((p) => p.id === parseInt(id));
+      return {
+        ...product,
+        quantity: qty,
+      };
+    });
+
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = 180;
   const discount = 0;
   const total = subtotal + shipping - discount;
@@ -56,15 +50,15 @@ export default function CartPage() {
                   Items in cart ({cartItems.length})
                 </h3>
 
-                {cartItems.map(([title, qty]) => (
+                {cartItems.map((item) => (
                   <div
-                    key={title}
+                    key={item.id}
                     className="flex items-start gap-4 mb-6 border-b pb-4"
                   >
                     {/* Image */}
                     <img
-                      src={productDetails[title].image}
-                      alt={title}
+                      src={item.image}
+                      alt={item.title}
                       className="w-20 h-24 object-cover rounded-lg border shrink-0"
                     />
 
@@ -72,34 +66,34 @@ export default function CartPage() {
                     <div className="flex-1 flex flex-col justify-between gap-2">
                       {/* Name + Price */}
                       <div>
-                        <p className="font-semibold text-sm">{title}</p>
-                        <p className="text-sm text-gray-700 mt-1">₹ {productDetails[title].price}</p>
+                        <p className="font-semibold text-sm">{item.title}</p>
+                        <p className="text-sm text-gray-700 mt-1">₹ {item.price}</p>
                       </div>
 
                       {/* Quantity and Delete */}
                       <div className="flex items-center gap-2 mt-2">
                         <button
                           onClick={() => {
-                            const newQty = qty - 1;
+                            const newQty = item.quantity - 1;
                             if (newQty <= 0) {
-                              deleteFromCart(title);
+                              deleteFromCart(item.id);
                             } else {
-                              removeFromCart(title);
+                              removeFromCart(item.id);
                             }
                           }}
                           className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
                         >
                           −
                         </button>
-                        <span className="text-sm w-6 text-center">{qty}</span>
+                        <span className="text-sm w-6 text-center">{item.quantity}</span>
                         <button
-                          onClick={() => addToCart(title)}
+                          onClick={() => addToCart(item.id)}
                           className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
                         >
                           +
                         </button>
                         <button
-                          onClick={() => deleteFromCart(title)}
+                          onClick={() => deleteFromCart(item.id)}
                           className="ml-2 text-red-500 hover:underline"
                           title="Remove Item"
                         >
