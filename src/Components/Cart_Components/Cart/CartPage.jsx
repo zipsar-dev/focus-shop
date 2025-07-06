@@ -63,12 +63,12 @@ export default function CartPage() {
                 {cartItems.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-start gap-4 mb-6 border-b pb-4"
+                    className="flex items-start gap-4 mb-6 border-b border-gray-300 pb-4"
                   >
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-20 h-24 object-cover rounded-lg border shrink-0"
+                      className="w-20 h-24 object-cover rounded-lg border border-gray-300 shrink-0"
                     />
                     <div className="flex-1 flex flex-col justify-between gap-2">
                       <div>
@@ -77,7 +77,7 @@ export default function CartPage() {
                         </p>
                         <p className="text-sm text-gray-700 mt-1">₹ {item.price}</p>
                       </div>
-                      <div className="flex items-center gap-2 mt-2">
+                      <div className="flex items-center gap-2 mt-2 border-t border-gray-300 pt-2">
                         <button
                           onClick={() => {
                             const newQty = item.quantity - 1;
@@ -134,7 +134,7 @@ export default function CartPage() {
                 </span>
                 <span>- ₹ {discount}</span>
               </div>
-              <hr className="my-3" />
+              <hr className="my-3 border-gray-300" />
               <div className="flex justify-between font-bold text-lg">
                 <span>Total</span>
                 <span>₹ {total}</span>
