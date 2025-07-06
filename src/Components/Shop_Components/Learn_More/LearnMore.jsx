@@ -135,7 +135,7 @@ export default function LearnMoreSlider() {
           <span
             key={i}
             className={`w-4 h-2 rounded-full transition-all duration-300 ${
-              i === index ? `${sub.color} bg-opacity-80` : "bg-gray-300"
+              i === index ? `${sub.color} bg-blue-500` : "bg-blue-200"
             }`}
           />
         ))}
