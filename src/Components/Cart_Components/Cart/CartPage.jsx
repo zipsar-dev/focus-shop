@@ -58,9 +58,19 @@ export default function CartPage() {
             {/* Cart Items */}
             <div className="w-[90%] lg:w-full col-span-2 space-y-8">
               <div className="bg-white p-6 rounded-xl shadow">
-                <h3 className="text-lg font-semibold mb-4">
-                  Items in cart ({cartItems.length})
-                </h3>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+                  <h3 className="text-lg font-semibold">
+                    Items in cart ({cartItems.length})
+                  </h3>
+                  <button
+                    onClick={() => {
+                      cartItems.forEach((item) => deleteFromCart(item.id));
+                    }}
+                    className="px-4 py-2 border border-red-500 border-b-[4px] text-red-600 rounded-full font-semibold hover:bg-red-50 transition w-fit"
+                  >
+                    Clear Cart
+                  </button>
+                </div>
 
                 {cartItems.map((item) => (
                   <div
