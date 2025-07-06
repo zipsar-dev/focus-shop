@@ -59,52 +59,53 @@ export default function CartPage() {
                 {cartItems.map(([title, qty]) => (
                   <div
                     key={title}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b pb-4"
+                    className="flex items-start gap-4 mb-6 border-b pb-4"
                   >
-                    {/* Name */}
-                    <div className="flex items-center gap-4 min-w-0 flex-1">
-                      <img
-                        src={productDetails[title].image}
-                        alt={title}
-                        className="w-16 h-20 object-cover rounded-lg border"
-                      />
-                      <p className="font-semibold text-sm">{title}</p>
-                    </div>
+                    {/* Image */}
+                    <img
+                      src={productDetails[title].image}
+                      alt={title}
+                      className="w-20 h-24 object-cover rounded-lg border shrink-0"
+                    />
 
-                    {/* Price */}
-                    <div className="text-sm font-semibold text-gray-800 min-w-[70px] text-right">
-                      ₹ {productDetails[title].price}
-                    </div>
+                    {/* Right Content */}
+                    <div className="flex-1 flex flex-col justify-between gap-2">
+                      {/* Name + Price */}
+                      <div>
+                        <p className="font-semibold text-sm">{title}</p>
+                        <p className="text-sm text-gray-700 mt-1">₹ {productDetails[title].price}</p>
+                      </div>
 
-                    {/* Quantity + Delete */}
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => {
-                          const newQty = qty - 1;
-                          if (newQty <= 0) {
-                            deleteFromCart(title);
-                          } else {
-                            removeFromCart(title);
-                          }
-                        }}
-                        className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
-                      >
-                        −
-                      </button>
-                      <span className="text-sm w-6 text-center">{qty}</span>
-                      <button
-                        onClick={() => addToCart(title)}
-                        className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
-                      >
-                        +
-                      </button>
-                      <button
-                        onClick={() => deleteFromCart(title)}
-                        className="ml-2 text-red-500 hover:underline text-sm"
-                        title="Remove Item"
-                      >
-                        <Trash2 size={16} />
-                      </button>
+                      {/* Quantity and Delete */}
+                      <div className="flex items-center gap-2 mt-2">
+                        <button
+                          onClick={() => {
+                            const newQty = qty - 1;
+                            if (newQty <= 0) {
+                              deleteFromCart(title);
+                            } else {
+                              removeFromCart(title);
+                            }
+                          }}
+                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
+                        >
+                          −
+                        </button>
+                        <span className="text-sm w-6 text-center">{qty}</span>
+                        <button
+                          onClick={() => addToCart(title)}
+                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
+                        >
+                          +
+                        </button>
+                        <button
+                          onClick={() => deleteFromCart(title)}
+                          className="ml-2 text-red-500 hover:underline"
+                          title="Remove Item"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
