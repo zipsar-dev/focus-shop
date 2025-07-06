@@ -127,7 +127,7 @@ export default function Selected_Hero({ debug = false }) {
                   <button
                     key={kit}
                     onClick={() => setSelectedFormat(kit)}
-                    className={`w-full sm:w-1/3 flex items-center gap-2 px-4 py-3 rounded-[14px] font-medium transition-all justify-center ${
+                    className={`w-full sm:w-1/3 flex items-center gap-2 px-4 py-3 rounded-[14px] font-medium transition-all justify-center cursor-pointer ${
                       selectedFormat === kit
                         ? "bg-[#4F7BF8] text-white shadow border border-black text-2xl"
                         : "text-black"

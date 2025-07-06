@@ -54,7 +54,7 @@ export default function CartPage() {
                     onClick={() => {
                       cartItems.forEach((item) => deleteFromCart(item.id));
                     }}
-                    className="px-4 py-2 border border-red-500 border-b-[4px] text-red-600 rounded-full font-semibold hover:bg-red-50 transition w-fit"
+                    className="px-4 py-2 border border-red-500 border-b-[4px] text-red-600 rounded-full font-semibold hover:bg-red-50 transition w-fit cursor-pointer"
                   >
                     Clear Cart
                   </button>
@@ -92,14 +92,14 @@ export default function CartPage() {
                               removeFromCart(item.id);
                             }
                           }}
-                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
+                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300 cursor-pointer"
                         >
                           −
                         </button>
                         <span className="text-sm w-6 text-center">{item.quantity}</span>
                         <button
                           onClick={() => addToCart(item.id)}
-                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
+                          className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300 cursor-pointer" 
                         >
                           +
                         </button>
@@ -161,7 +161,7 @@ export default function CartPage() {
         <div className="mt-8 flex justify-center">
           <button
             onClick={() => navigate("/")}
-            className="bg-white border border-black border-b-[4px] rounded-full px-6 py-3 text-blue-700 font-semibold hover:bg-blue-50 transition"
+            className="bg-white border border-black border-b-[4px] rounded-full px-6 py-3 text-blue-700 font-semibold hover:bg-blue-50 transition cursor-pointer"
           >
             ← Continue Shopping
           </button>

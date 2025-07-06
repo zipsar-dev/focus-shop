@@ -51,12 +51,12 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
           <button
             onClick={onRemove}
             disabled={quantity === 0}
-            className="text-gray-500 hover:text-black disabled:opacity-40"
+            className="text-gray-500 hover:text-black disabled:opacity-40 cursor-pointer"
           >
             <Minus size={16} />
           </button>
           <span className="text-sm">{quantity}</span>
-          <button onClick={onAdd} className="text-gray-500 hover:text-black">
+          <button onClick={onAdd} className="text-gray-500 hover:text-black cursor-pointer">
             <Plus size={16} />
           </button>
         </div>
@@ -93,7 +93,7 @@ export default function ShopCard() {
         <div className="mt-6 flex justify-center">
           <button
             onClick={handleBuy}
-            className="bg-white border border-black border-b-[5px] rounded-full px-6 py-3 text-blue-700 font-semibold hover:bg-blue-50 transition w-full sm:w-auto text-center"
+            className="bg-white border border-black border-b-[5px] rounded-full px-6 py-3 text-blue-700 font-semibold hover:bg-blue-50 transition w-full sm:w-auto text-center cursor-pointer"
           >
             Review Cart & Buy →
           </button>

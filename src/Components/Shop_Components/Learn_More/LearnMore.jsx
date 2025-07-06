@@ -119,13 +119,13 @@ export default function LearnMoreSlider() {
           onClick={goPrev}
           className="absolute top-1/2 left-2 -translate-y-1/2 p-2 rounded-full hover:bg-gray-100 hidden md:block"
         >
-          <ChevronLeft className="w-6 h-6 text-gray-600" />
+          <ChevronLeft className="w-6 h-6 text-gray-600 cursor-pointer" />
         </button>
         <button
           onClick={goNext}
           className="absolute top-1/2 right-2 -translate-y-1/2 p-2 rounded-full hover:bg-gray-100 hidden md:block"
         >
-          <ChevronRight className="w-6 h-6 text-gray-600" />
+          <ChevronRight className="w-6 h-6 text-gray-600 cursor-pointer" />
         </button>
       </div>
 
