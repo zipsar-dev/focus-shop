@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Company Info Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src="public\Images\logo.png" alt="Company Logo" className="h-12" />
+              <img src="/Images/logo.png" alt="Company Logo" className="h-12" />
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
               Providing CA students with precise, high-quality question banks and reviewers. Dedicated to spreading knowledge and supporting your success.

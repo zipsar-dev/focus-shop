@@ -62,7 +62,7 @@ export default function Selected_Hero({ debug = false }) {
           {/* Image */}
           <div className={`flex-1 flex justify-center items-center ${border("CMD-IMAGE-SECTION")}`}>
             <img
-              src="/public/Images/books-hero-sample.jpg"
+              src="/Images/books-hero-sample.jpg"
               alt="CA Foundation Reviewer"
               className="w-[90%] max-w-[500px] drop-shadow-xl"
             />
