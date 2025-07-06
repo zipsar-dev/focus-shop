@@ -32,21 +32,25 @@ export default function CartPage() {
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Header */}
-      <div className="w-full flex items-center justify-between py-4 px-4 sm:px-12 bg-white shadow-sm">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between py-4 px-4 sm:px-12 bg-white shadow-sm gap-2 sm:gap-0">
         <img src="/Images/logo.png" alt="Logo" className="w-24 sm:w-28" />
-        <div className="flex items-center gap-2 text-sm sm:text-base font-semibold">
-          <span>PRODUCTS</span>
-          <span className="text-gray-500">-----</span>
-          <span className="text-blue-500 underline">CART</span>
-          <span className="text-gray-500">-----</span>
-          <span>PAYMENT</span>
+        <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold flex-wrap text-center justify-center">
+          <span className="whitespace-nowrap">PRODUCTS</span>
+          <span className="text-gray-400 hidden sm:inline">-----</span>
+          <span className="text-blue-500 underline whitespace-nowrap">CART</span>
+          <span className="text-gray-400 hidden sm:inline">-----</span>
+          <span className="whitespace-nowrap">PAYMENT</span>
         </div>
         <div className="text-xs sm:text-sm text-green-600 font-medium flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-            stroke="currentColor" className="w-5 h-5 text-green-500">
-            <path strokeLinecap="round" strokeLinejoin="round"
-              d="M4.5 12.75l6 6 9-13.5" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-5 h-5 text-green-500"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
           100% SECURE
         </div>
@@ -136,7 +140,10 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between text-sm">
                 <span>
-                  Coupon Code <span className="text-blue-600 underline ml-1 cursor-pointer">View Offers</span>
+                  Coupon Code{" "}
+                  <span className="text-blue-600 underline ml-1 cursor-pointer">
+                    View Offers
+                  </span>
                 </span>
                 <span>- ₹ {discount}</span>
               </div>
@@ -145,7 +152,10 @@ export default function CartPage() {
                 <span>Total</span>
                 <span>₹ {total}</span>
               </div>
-              <button disabled className="w-full mt-4 bg-gray-300 text-white py-3 rounded-full font-semibold cursor-not-allowed">
+              <button
+                disabled
+                className="w-full mt-4 bg-gray-300 text-white py-3 rounded-full font-semibold cursor-not-allowed"
+              >
                 Payment Coming Soon
               </button>
               <div className="text-xs text-center mt-2 text-gray-500">
