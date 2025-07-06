@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import { Trash2 } from "lucide-react";
 import CartNav from "../../Common/CartNav/CartNav";
-import products from "../../../data/products"; // 👈 Make sure this path is correct
+import products from "../../../data/products";
 
 export default function CartPage() {
-  const { cart, addToCart, removeFromCart, deleteFromCart } =
-    useContext(CartContext);
+  const { cart, addToCart, removeFromCart, deleteFromCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const cartItems = Object.entries(cart)
@@ -20,10 +19,7 @@ export default function CartPage() {
       };
     });
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = 180;
   const discount = 0;
   const total = subtotal + shipping - discount;
@@ -35,17 +31,9 @@ export default function CartPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8">
         {cartItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4 bg-white rounded-xl shadow text-center">
-            <img
-              src="/Images/cart.svg"
-              alt="Empty Cart"
-              className="w-48 sm:w-64 mb-6"
-            />
-            <h3 className="text-xl font-semibold mb-2">
-              Hey, it feels so light!
-            </h3>
-            <p className="text-gray-500 mb-4">
-              There is nothing in your cart. Let’s add some items.
-            </p>
+            <img src="/Images/cart.svg" alt="Empty Cart" className="w-48 sm:w-64 mb-6" />
+            <h3 className="text-xl font-semibold mb-2">Hey, it feels so light!</h3>
+            <p className="text-gray-500 mb-4">There is nothing in your cart. Let’s add some items.</p>
             <button
               onClick={() => navigate("/")}
               className="px-6 py-2 border border-pink-500 border-b-4 border-r-4 text-pink-600 rounded-full font-semibold hover:bg-pink-50 transition"
@@ -58,7 +46,7 @@ export default function CartPage() {
             {/* Cart Items */}
             <div className="w-[90%] lg:w-full col-span-2 space-y-8">
               <div className="bg-white p-6 rounded-xl shadow">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+                <div className="flex flex-row items-center justify-between mb-4 gap-4">
                   <h3 className="text-lg font-semibold">
                     Items in cart ({cartItems.length})
                   </h3>
@@ -77,26 +65,18 @@ export default function CartPage() {
                     key={item.id}
                     className="flex items-start gap-4 mb-6 border-b pb-4"
                   >
-                    {/* Image */}
                     <img
                       src={item.image}
                       alt={item.title}
                       className="w-20 h-24 object-cover rounded-lg border shrink-0"
                     />
-
-                    {/* Right Content */}
                     <div className="flex-1 flex flex-col justify-between gap-2">
-                      {/* Name + Price */}
                       <div>
                         <p className="font-semibold text-sm truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]">
                           {item.title}
                         </p>
-                        <p className="text-sm text-gray-700 mt-1">
-                          ₹ {item.price}
-                        </p>
+                        <p className="text-sm text-gray-700 mt-1">₹ {item.price}</p>
                       </div>
-
-                      {/* Quantity and Delete */}
                       <div className="flex items-center gap-2 mt-2">
                         <button
                           onClick={() => {
@@ -111,9 +91,7 @@ export default function CartPage() {
                         >
                           −
                         </button>
-                        <span className="text-sm w-6 text-center">
-                          {item.quantity}
-                        </span>
+                        <span className="text-sm w-6 text-center">{item.quantity}</span>
                         <button
                           onClick={() => addToCart(item.id)}
                           className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300"
@@ -143,8 +121,7 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between text-sm">
                 <span>
-                  Shipping at{" "}
-                  <span className="text-red-600">Coimbatore, 641001</span>
+                  Shipping at <span className="text-red-600">Coimbatore, 641001</span>
                 </span>
                 <span>₹ {shipping}</span>
               </div>
