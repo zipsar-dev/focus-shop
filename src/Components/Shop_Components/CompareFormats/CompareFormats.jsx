@@ -47,7 +47,7 @@ const formats = [
 
 export default function CompareFormats() {
   return (
-    <div className="compare-formats bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-[32px] p-8 md:p-10 max-w-[80%] md:max-w-[76%] mx-auto my-12">
+    <div className="compare-formats bg-white shadow-lg rounded-[32px] p-6 md:p-12 max-w-[90%] md:max-w-[76%] mx-auto my-12">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
         Compare Material Formats
       </h2>
@@ -56,7 +56,7 @@ export default function CompareFormats() {
         {formats.map((format, index) => (
           <div
             key={index}
-            className="border border-gray-200 rounded-2xl p-6 text-sm flex flex-col justify-between"
+            className="border border-gray-200 rounded-2xl p-6 text-sm flex flex-col justify-between shadow-sm hover:shadow-md transition"
           >
             <div>
               <div className="flex items-center gap-2 mb-2">

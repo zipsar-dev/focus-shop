@@ -52,7 +52,7 @@ export default function CartPage() {
         ) : (
           <div className="flex flex-col gap-8 items-center lg:grid lg:grid-cols-3 lg:items-start lg:gap-8">
             {/* Cart Items */}
-            <div className="w-[80%] lg:w-full col-span-2 space-y-8">
+            <div className="w-[90%] lg:w-full col-span-2 space-y-8">
               <div className="bg-white p-6 rounded-xl shadow">
                 <h3 className="text-lg font-semibold mb-4">
                   Items in cart ({cartItems.length})
@@ -66,7 +66,7 @@ export default function CartPage() {
                     />
                     <div className="flex-1">
                       <p className="font-semibold text-sm">{title}</p>
-                      <p className="text-xs text-blue-500 mt-1">PRINTED BOOK</p>
+                      {/* <p className="text-xs text-blue-500 mt-1">PRINTED BOOK</p> */}
                       <div className="flex items-center mt-2 gap-2">
                         <button
                           onClick={() => {
@@ -105,7 +105,7 @@ export default function CartPage() {
             </div>
 
             {/* Summary */}
-            <div className="w-[80%] lg:w-full bg-white p-6 rounded-xl shadow space-y-6">
+            <div className="w-[90%] lg:w-full bg-white p-6 rounded-xl shadow space-y-6">
               <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
               <div className="flex justify-between text-sm">
                 <span>Subtotal</span>

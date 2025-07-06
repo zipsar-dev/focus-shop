@@ -40,14 +40,12 @@ const subjects = [
 export default function LearnMoreSlider() {
   const [index, setIndex] = useState(0);
   const isMobile = window.innerWidth < 768;
-  const subject = subjects[index];
   const containerRef = useRef(null);
 
   const goNext = () => setIndex((prev) => (prev + 1) % subjects.length);
   const goPrev = () =>
     setIndex((prev) => (prev - 1 + subjects.length) % subjects.length);
 
-  // Auto-scroll every 5 seconds on mobile
   useEffect(() => {
     if (isMobile) {
       const interval = setInterval(goNext, 5000);
@@ -56,7 +54,7 @@ export default function LearnMoreSlider() {
   }, [index, isMobile]);
 
   return (
-    <div className="bg-white shadow-lg rounded-[24px] p-6 md:p-10 max-w-[80%] md:max-w-[76%] mx-auto mt-10 overflow-hidden">
+    <div className="bg-white shadow-lg rounded-[32px] p-6 md:p-12 max-w-[90%] md:max-w-[76%] mx-auto my-12 overflow-hidden">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold text-gray-800">Last Attempt Kit</h2>
@@ -67,7 +65,6 @@ export default function LearnMoreSlider() {
 
       {/* Content */}
       <div className="relative min-h-[280px]">
-        {/* Slider wrapper */}
         <div
           className="flex transition-transform duration-500 ease-in-out w-full"
           style={{ transform: `translateX(-${index * 100}%)` }}
@@ -117,7 +114,7 @@ export default function LearnMoreSlider() {
           ))}
         </div>
 
-        {/* Arrows (Only on Desktop) */}
+        {/* Arrows (Desktop Only) */}
         <button
           onClick={goPrev}
           className="absolute top-1/2 left-2 -translate-y-1/2 p-2 rounded-full hover:bg-gray-100 hidden md:block"
