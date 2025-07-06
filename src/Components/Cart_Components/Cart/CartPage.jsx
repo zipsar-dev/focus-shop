@@ -82,18 +82,18 @@ export default function CartPage() {
                       alt={item.title}
                       className="w-20 h-24 object-cover rounded-lg border border-gray-300 shrink-0"
                     />
-                    <div className="flex-1 flex flex-col justify-between gap-2">
-                      <div>
+
+                    <div className="flex-1 flex flex-col justify-between gap-2 min-w-0">
+                      <div className="overflow-hidden">
                         <p
-                          className="font-semibold text-sm truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]"
+                          className="font-semibold text-sm truncate block text-ellipsis whitespace-nowrap max-w-full"
                           title={item.title}
                         >
                           {item.title}
                         </p>
-                        <p className="text-sm text-gray-700 mt-1">
-                          ₹ {item.price}
-                        </p>
+                        <p className="text-sm text-gray-700 mt-1">₹ {item.price}</p>
                       </div>
+
                       <div className="flex items-center gap-2 mt-2 border-t border-gray-300 pt-2">
                         <button
                           onClick={() => {
@@ -108,9 +108,7 @@ export default function CartPage() {
                         >
                           −
                         </button>
-                        <span className="text-sm w-6 text-center">
-                          {item.quantity}
-                        </span>
+                        <span className="text-sm w-6 text-center">{item.quantity}</span>
                         <button
                           onClick={() => addToCart(item.id)}
                           className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300 cursor-pointer"
@@ -127,6 +125,7 @@ export default function CartPage() {
                       </div>
                     </div>
                   </div>
+
                 ))}
               </div>
             </div>
