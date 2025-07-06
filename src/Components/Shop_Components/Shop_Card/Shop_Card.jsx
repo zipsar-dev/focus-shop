@@ -11,7 +11,7 @@ const products = [
       "Get your basics tested for the stepping stones of CA journey. Get all 4 reviewers and practice exam grade questions.",
     tag: "Recommended",
     offer: "Use code COMBO during checkout to get 17% off!",
-    image: "/Images/book-card-sample.jpg", // ✅ Corrected path
+    image: "/Images/book-card-sample.jpg",
   },
   {
     title: "Accounting",
@@ -102,7 +102,7 @@ export default function ShopCard() {
 
   return (
     <div className="shop-card p-4 sm:p-6">
-      <div className="bg-white shadow-md rounded-[32px] p-6 w-full max-w-[90%] sm:max-w-[77%] mx-auto mb-6">
+      <div className="bg-white shadow-lg rounded-[32px] p-6 md:p-12 max-w-[90%] md:max-w-[76%] mx-auto my-12">
         <h2 className="text-2xl font-semibold mb-6 text-center sm:text-left">
           Shop Study Kits
         </h2>
