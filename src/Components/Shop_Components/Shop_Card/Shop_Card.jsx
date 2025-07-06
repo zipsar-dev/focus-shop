@@ -19,7 +19,7 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
           className="text-lg font-semibold truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]"
           title={product.title}
         >
-          {product.title.length > 20 ? product.title.slice(0, 20) + "..." : product.title}
+          {product.title}
         </h3>
 
         <p className="text-gray-600 text-sm mt-1">{product.description}</p>
@@ -56,7 +56,10 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
             <Minus size={16} />
           </button>
           <span className="text-sm">{quantity}</span>
-          <button onClick={onAdd} className="text-gray-500 hover:text-black cursor-pointer">
+          <button
+            onClick={onAdd}
+            className="text-gray-500 hover:text-black cursor-pointer"
+          >
             <Plus size={16} />
           </button>
         </div>
