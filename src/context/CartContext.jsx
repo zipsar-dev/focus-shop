@@ -1,9 +1,16 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect, useMemo } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState({});
+    const [cart, setCart] = useState(() => {
+        const storedCart = localStorage.getItem("cart");
+        return storedCart ? JSON.parse(storedCart) : {};
+    });
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     const addToCart = (title) => {
         setCart((prev) => ({
@@ -27,10 +34,20 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    const contextValue = useMemo(() => ({
+        cart,
+        addToCart,
+        removeFromCart,
+        deleteFromCart,
+    }), [cart]);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, deleteFromCart }}>
+        <CartContext.Provider value={contextValue}>
             {children}
         </CartContext.Provider>
     );
+};
+
+CartProvider.propTypes = {
+    children: PropTypes.node.isRequired,
 };
