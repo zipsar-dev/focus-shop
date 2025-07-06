@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import { Trash2 } from "lucide-react";
+import CartNav from "../../Common/CartNav/CartNav";
 
 const productDetails = {
   "Combo – All Subjects": {
@@ -31,30 +32,8 @@ export default function CartPage() {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      {/* Header */}
-      <div className="w-full flex flex-col sm:flex-row items-center justify-between py-4 px-4 sm:px-12 bg-white shadow-sm gap-2 sm:gap-0">
-        <img src="/Images/logo.png" alt="Logo" className="w-24 sm:w-28" />
-        <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold flex-wrap text-center justify-center">
-          <span className="whitespace-nowrap">PRODUCTS</span>
-          <span className="text-gray-400 hidden sm:inline">-----</span>
-          <span className="text-blue-500 underline whitespace-nowrap">CART</span>
-          <span className="text-gray-400 hidden sm:inline">-----</span>
-          <span className="whitespace-nowrap">PAYMENT</span>
-        </div>
-        <div className="text-xs sm:text-sm text-green-600 font-medium flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5 text-green-500"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-          100% SECURE
-        </div>
-      </div>
+      {/* New Nav */}
+      <CartNav />
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8">
@@ -71,9 +50,9 @@ export default function CartPage() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-8 items-center lg:grid lg:grid-cols-3 lg:items-start lg:gap-8">
             {/* Cart Items */}
-            <div className="col-span-2 space-y-8">
+            <div className="w-[80%] lg:w-full col-span-2 space-y-8">
               <div className="bg-white p-6 rounded-xl shadow">
                 <h3 className="text-lg font-semibold mb-4">
                   Items in cart ({cartItems.length})
@@ -126,7 +105,7 @@ export default function CartPage() {
             </div>
 
             {/* Summary */}
-            <div className="bg-white p-6 rounded-xl shadow space-y-6">
+            <div className="w-[80%] lg:w-full bg-white p-6 rounded-xl shadow space-y-6">
               <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
               <div className="flex justify-between text-sm">
                 <span>Subtotal</span>
