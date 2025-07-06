@@ -47,10 +47,10 @@ const CartNav = () => {
         {/* Home Button */}
         <button
           onClick={() => navigate('/')}
-          className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2"
+          className="bg-white border border-black border-b-[5px] rounded-full px-4 sm:px-5 py-2 text-blue-700 font-semibold hover:bg-blue-50 transition flex items-center gap-2 cursor-pointer"
         >
           <Home size={18} />
-          <span className="text-xs sm:text-sm">Back Home</span>
+          <span className="text-xs sm:text-sm">Back To Home</span>
         </button>
       </div>
 
