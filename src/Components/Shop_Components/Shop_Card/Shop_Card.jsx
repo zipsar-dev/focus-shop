@@ -13,17 +13,15 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
         className="w-full h-40 object-cover rounded-lg"
       />
     </div>
-    <div className="flex-1 flex flex-col justify-between gap-2">
+    <div className="flex-1 flex flex-col justify-between gap-2 min-w-0">
       <div>
         <h3
-          className="text-lg font-semibold truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-[300px]"
+          className="text-lg font-semibold truncate block text-ellipsis whitespace-nowrap"
           title={product.title}
         >
           {product.title}
         </h3>
-
         <p className="text-gray-600 text-sm mt-1">{product.description}</p>
-
         {product.bulletPoints && (
           <ul className="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
             {product.bulletPoints.map((point, i) => (
