@@ -42,6 +42,27 @@ export default function LearnMoreSlider() {
   const isMobile = window.innerWidth < 768;
   const containerRef = useRef(null);
 
+  // Swipe gesture logic
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 50) goNext(); // swipe left
+    if (distance < -50) goPrev(); // swipe right
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   const goNext = () => setIndex((prev) => (prev + 1) % subjects.length);
   const goPrev = () =>
     setIndex((prev) => (prev - 1 + subjects.length) % subjects.length);
@@ -69,6 +90,9 @@ export default function LearnMoreSlider() {
           className="flex transition-transform duration-500 ease-in-out w-full"
           style={{ transform: `translateX(-${index * 100}%)` }}
           ref={containerRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {subjects.map((subject, idx) => (
             <div
