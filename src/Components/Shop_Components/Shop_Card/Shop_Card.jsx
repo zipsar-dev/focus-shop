@@ -1,70 +1,94 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import products from "../../../data/products";
 
-const ProductCard = ({ product, quantity, onAdd, onRemove }) => (
-  <div className="product-card rounded-[16px] bg-white shadow-md p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 border border-gray-200 transition hover:shadow-lg hover:scale-[1.01] duration-200">
-    <div className="w-full sm:w-[160px] shrink-0">
-      <img
-        src={product.image}
-        alt={product.title}
-        className="w-full h-40 object-cover rounded-lg"
-      />
-    </div>
-    <div className="flex-1 flex flex-col justify-between gap-2 min-w-0">
-      <div>
-        <h3
-          className="text-lg font-semibold truncate block text-ellipsis whitespace-nowrap"
-          title={product.title}
-        >
-          {product.title}
-        </h3>
-        <p className="text-gray-600 text-sm mt-1">{product.description}</p>
-        {product.bulletPoints && (
-          <ul className="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
-            {product.bulletPoints.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
-          </ul>
-        )}
+const ProductCard = ({ product, quantity, onAdd, onRemove }) => {
+  const navigate = useNavigate();
 
-        {product.tag && (
-          <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-2">
-            {product.tag}
-          </span>
-        )}
+  const handleCardClick = () => {
+    navigate(`/material/${product.keyName}`);
+  };
 
-        {product.offer && (
-          <p className="text-red-500 text-xs mt-1 font-medium">
-            {product.offer}
-          </p>
-        )}
+  const handleQuantityClick = (e) => {
+    e.stopPropagation(); // Prevent card click when quantity buttons are clicked
+  };
+
+  return (
+    <div
+      className="product-card rounded-[16px] bg-white shadow-md p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 border border-gray-200 transition hover:shadow-lg hover:scale-[1.01] duration-200 cursor-pointer"
+      onClick={handleCardClick}
+    >
+      <div className="w-full sm:w-[160px] shrink-0">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-40 object-cover rounded-lg"
+        />
       </div>
+      <div className="flex-1 flex flex-col justify-between gap-2 min-w-0">
+        <div>
+          <h3
+            className="text-lg font-semibold truncate block text-ellipsis whitespace-nowrap"
+            title={product.title}
+          >
+            {product.title}
+          </h3>
+          <p className="text-gray-600 text-sm mt-1">{product.description}</p>
+          {product.bulletPoints && (
+            <ul className="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+              {product.bulletPoints.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
+          )}
 
-      <div className="flex items-center justify-between mt-4">
-        <span className="text-lg font-bold">₹ {product.price}</span>
-        <div className="flex items-center border border-gray-300 rounded-full px-3 py-1 w-[100px] justify-between">
-          <button
-            onClick={onRemove}
-            disabled={quantity === 0}
-            className="text-gray-500 hover:text-black disabled:opacity-40 cursor-pointer"
+          {product.tag && (
+            <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-2">
+              {product.tag}
+            </span>
+          )}
+
+          {product.offer && (
+            <p className="text-red-500 text-xs mt-1 font-medium">
+              {product.offer}
+            </p>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between mt-4">
+          <span className="text-lg font-bold">₹ {product.price}</span>
+          <div
+            className="flex items-center border border-gray-300 rounded-full px-3 py-1 w-[100px] justify-between"
+            onClick={handleQuantityClick}
           >
-            <Minus size={16} />
-          </button>
-          <span className="text-sm">{quantity}</span>
-          <button
-            onClick={onAdd}
-            className="text-gray-500 hover:text-black cursor-pointer"
-          >
-            <Plus size={16} />
-          </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onRemove();
+              }}
+              disabled={quantity === 0}
+              className="text-gray-500 hover:text-black disabled:opacity-40 cursor-pointer"
+            >
+              <Minus size={16} />
+            </button>
+            <span className="text-sm">{quantity}</span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onAdd();
+              }}
+              className="text-gray-500 hover:text-black cursor-pointer"
+            >
+              <Plus size={16} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function ShopCard() {
   const { cart, addToCart, removeFromCart } = useContext(CartContext);

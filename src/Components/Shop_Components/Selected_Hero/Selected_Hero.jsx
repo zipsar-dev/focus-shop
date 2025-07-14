@@ -10,7 +10,7 @@ import {
 export default function Selected_Hero({ debug = false }) {
   const [selectedFormat, setSelectedFormat] = useState("Lite Kit");
 
-  const border = (cmd) =>
+  const border = () =>
     debug ? `border border-dashed border-red-400 p-2 rounded` : "";
 
   const formatDetails = {
@@ -35,7 +35,7 @@ export default function Selected_Hero({ debug = false }) {
   };
 
   return (
-    <div className="relative bg-[#FAFBFFFF] min-h-screen overflow-hidden font-sans text-gray-800">
+    <div className="relative bg-[#FAFBFFFF] min-h-screen overflow-hidden text-gray-800">
       {/* Grid Background */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
@@ -52,15 +52,25 @@ export default function Selected_Hero({ debug = false }) {
       <div className="relative z-10 p-6 md:p-12">
         {/* Breadcrumb */}
         <div
-          className={`text-sm text-gray-500 mb-9 mt-6 ml-12 ${border("CMD-BREADCRUMB")}`}
+          className={`text-sm text-gray-500 mb-9 mt-6 ml-12 ${border(
+            "CMD-BREADCRUMB"
+          )}`}
         >
           Shop / <span className="text-black">Last Attempt Kit</span>
         </div>
 
         {/* Hero Section */}
-        <div className={`flex flex-col lg:flex-row gap-10 ${border("CMD-HERO-SECTION")}`}>
+        <div
+          className={`flex flex-col lg:flex-row gap-10 ${border(
+            "CMD-HERO-SECTION"
+          )}`}
+        >
           {/* Image */}
-          <div className={`flex-1 flex justify-center items-center ${border("CMD-IMAGE-SECTION")}`}>
+          <div
+            className={`flex-1 flex justify-center items-center ${border(
+              "CMD-IMAGE-SECTION"
+            )}`}
+          >
             <img
               src="/Images/books-hero-sample.jpg"
               alt="CA Foundation Reviewer"
@@ -70,18 +80,31 @@ export default function Selected_Hero({ debug = false }) {
 
           {/* Text */}
           <div className={`flex-1 w-full ${border("CMD-TEXT-CONTENT")}`}>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Last Attempt Kit</h1>
-            <p className="text-blue-600 font-semibold text-lg mb-6">Sept'25 & Jan'26</p>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+              Last Attempt Kit
+            </h1>
+            <p className="text-blue-600 font-semibold text-lg mb-6">
+              Sept'25 & Jan'26
+            </p>
 
-            <ul className={`space-y-6 mb-10 leading-relaxed ${border("CMD-BULLET-POINTS")}`}>
+            <ul
+              className={`space-y-6 mb-10 leading-relaxed ${border(
+                "CMD-BULLET-POINTS"
+              )}`}
+            >
               <li className="flex gap-4 items-start">
                 <BookOpen className="mt-1 text-blue-500 w-6 h-6" />
                 <div className="w-full">
-                  <span className="font-bold text-[20px] text-gray-800">Smart Study</span>{" "}
-                  <span className="font-medium text-[18px] text-gray-600">› Hard Study</span>
+                  <span className="font-bold text-[20px] text-gray-800">
+                    Smart Study
+                  </span>{" "}
+                  <span className="font-medium text-[18px] text-gray-600">
+                    › Hard Study
+                  </span>
                   <br />
                   <span className="text-[17px] text-gray-700">
-                    Solve more questions in less time with our chapter-wise and topic-wise bifurcation.
+                    Solve more questions in less time with our chapter-wise and
+                    topic-wise bifurcation.
                   </span>
                 </div>
               </li>
@@ -89,8 +112,12 @@ export default function Selected_Hero({ debug = false }) {
               <li className="flex gap-4 items-start">
                 <FileLock2 className="mt-1 text-red-500 w-6 h-6" />
                 <div className="w-full">
-                  <span className="text-green-600 font-bold text-[20px]">Build your confidence</span>{" "}
-                  <span className="font-medium text-[18px] text-gray-600">from day 1</span>
+                  <span className="text-green-600 font-bold text-[20px]">
+                    Build your confidence
+                  </span>{" "}
+                  <span className="font-medium text-[18px] text-gray-600">
+                    from day 1
+                  </span>
                   <br />
                   <span className="text-[17px] text-gray-700">
                     Start solving ICAI-grade questions right from the beginning.
@@ -101,11 +128,16 @@ export default function Selected_Hero({ debug = false }) {
               <li className="flex gap-4 items-start">
                 <PackageCheck className="mt-1 text-black w-6 h-6" />
                 <div className="w-full">
-                  <span className="text-pink-500 font-bold text-[20px]">A better way</span>{" "}
-                  <span className="font-medium text-[18px] text-gray-600">to learn</span>
+                  <span className="text-pink-500 font-bold text-[20px]">
+                    A better way
+                  </span>{" "}
+                  <span className="font-medium text-[18px] text-gray-600">
+                    to learn
+                  </span>
                   <br />
                   <span className="text-[17px] text-gray-700">
-                    Refresh essential concepts before each chapter and build your skills efficiently.
+                    Refresh essential concepts before each chapter and build
+                    your skills efficiently.
                   </span>
                 </div>
               </li>
@@ -156,7 +188,6 @@ export default function Selected_Hero({ debug = false }) {
                 ))}
               </div>
             </div>
-
           </div>
         </div>
       </div>
