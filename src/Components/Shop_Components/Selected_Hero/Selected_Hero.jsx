@@ -1,11 +1,5 @@
-import React, { useState } from "react";
-import {
-  BookOpen,
-  FileLock2,
-  PackageCheck,
-  Truck,
-  CheckCircle,
-} from "lucide-react";
+import { useState } from "react";
+import { BookOpen, FileLock2, PackageCheck, CheckCircle } from "lucide-react";
 
 export default function Selected_Hero({ debug = false }) {
   const [selectedFormat, setSelectedFormat] = useState("Lite Kit");
