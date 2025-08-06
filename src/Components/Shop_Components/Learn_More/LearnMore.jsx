@@ -10,7 +10,7 @@ const subjects = [
     ],
     shopLink: "#",
     samplePDF: "#",
-    image: "/Images/book-card-sample.jpg",
+    image: "/Images/Planner.jpg",
     color: "border-blue-800",
   },
   {
@@ -21,7 +21,7 @@ const subjects = [
     ],
     shopLink: "#",
     samplePDF: "#",
-    image: "/Images/book-card-sample.jpg",
+    image: "/Images/Test series.jpg",
     color: "border-red-500",
   },
   {
@@ -32,7 +32,7 @@ const subjects = [
     ],
     shopLink: "#",
     samplePDF: "#",
-    image: "/Images/book-card-sample.jpg",
+    image: "/Images/Manual.jpg",
     color: "border-yellow-400",
   },
 ];
@@ -78,7 +78,9 @@ export default function LearnMoreSlider() {
     <div className="bg-white shadow-lg rounded-[32px] p-6 md:p-12 max-w-[90%] md:max-w-[76%] mx-auto my-12 overflow-hidden">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold text-gray-800">Last Attempt Kit</h2>
+        <h2 className="text-2xl font-semibold text-gray-800">
+          Last Attempt Kit
+        </h2>
         <span className="text-sm font-medium text-gray-500">
           {index + 1}/{subjects.length}
         </span>
@@ -106,7 +108,10 @@ export default function LearnMoreSlider() {
                   {subject.title}
                 </h3>
                 {subject.description.map((line, i) => (
-                  <p key={i} className="text-gray-700 mb-3 text-base leading-relaxed">
+                  <p
+                    key={i}
+                    className="text-gray-700 mb-3 text-base leading-relaxed"
+                  >
                     {line}
                   </p>
                 ))}

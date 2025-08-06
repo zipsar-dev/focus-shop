@@ -10,16 +10,17 @@ export default function Selected_Hero({ debug = false }) {
   const formatDetails = {
     "Lite Kit": [
       "Question Bank (Secure PDF)",
-      "Test Series (Without Solutions)",
+      "Test Series (Without Evaluation)",
     ],
     "Essentials Kit": [
       "Question Bank (Print + PDF)",
-      "Test Series (With Solutions)",
-      "Certified Copy Evaluation & Strategy Formulation",
+      "Test Series (With Video Evaluation)",
+      "FOCUS Planner",
+      "FOCUS Manual",
     ],
     "Pro Kit": [
       "Question Bank (Print + PDF)",
-      "Test Series (With Solutions)",
+      "Test Series (Without Video Evaluation)",
       "Certified Copy Evaluation & Strategy Formulation",
       "Recorded Revision Lectures",
       "Live Practice Sessions",
@@ -66,7 +67,7 @@ export default function Selected_Hero({ debug = false }) {
             )}`}
           >
             <img
-              src="/Images/books-hero-sample.jpg"
+              src="/Images/Both Group books.jpg"
               alt="CA Foundation Reviewer"
               className="w-[90%] max-w-[500px] drop-shadow-xl"
             />

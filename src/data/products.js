@@ -2,7 +2,7 @@ const products = [
   {
     id: 1,
     title: "Combo – Both Group book",
-    price: 1800,
+    price: 1001,
     description:
       "Get your basics tested for the stepping stones of CA journey. Get all 4 reviewers and practice exam grade questions.",
     tag: "Recommended",
@@ -13,7 +13,7 @@ const products = [
   {
     id: 2,
     title: "Combo - Group 1 Books",
-    price: 500,
+    price: 501,
     description:
       "Master the language of business! From basics to company accounts, practice questions and get familiar with Accounting Standards.",
     bulletPoints: [
@@ -27,7 +27,7 @@ const products = [
   {
     id: 3,
     title: "Group 1 Combo",
-    price: 400,
+    price: 501,
     description:
       "Understand how laws shape business decisions. Practice theory questions and learn to write answers using the right legal language.",
     bulletPoints: [
