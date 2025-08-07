@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
@@ -6,22 +7,34 @@ import CartNav from "../../Common/CartNav/CartNav";
 import products from "../../../data/products";
 
 export default function CartPage() {
-  const { cart, addToCart, removeFromCart, deleteFromCart } =
+  const { cart, cartDetails, addToCart, removeFromCart, deleteFromCart } =
     useContext(CartContext);
   const navigate = useNavigate();
 
   const cartItems = Object.entries(cart)
     .filter(([_, qty]) => qty > 0)
-    .map(([id, qty]) => {
-      const product = products.find((p) => p.id === parseInt(id));
+    .map(([cartKey, qty]) => {
+      const details = cartDetails[cartKey];
+      const productId = details?.productId || parseInt(cartKey.split("_")[0]);
+      const product = products.find((p) => p.id === productId);
+
+      if (!product) return null; // Handle case where product is not found
+
+      // Get price from cart details or fallback to product price
+      const price = details?.price || product.price || product.Lit_price || 0;
+
       return {
         ...product,
+        cartKey,
         quantity: qty,
+        price: price,
+        kitType: details?.kitType || "Lite Kit",
       };
-    });
+    })
+    .filter((item) => item !== null); // Filter out any null items
 
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + (item.price || 0) * (item.quantity || 0),
     0
   );
   const shipping = 180;
@@ -44,7 +57,7 @@ export default function CartPage() {
               Hey, it feels so light!
             </h3>
             <p className="text-gray-500 mb-4">
-              There is nothing in your cart. Let’s add some items.
+              There is nothing in your cart. Let's add some items.
             </p>
             <button
               onClick={() => navigate("/")}
@@ -64,7 +77,9 @@ export default function CartPage() {
                   </h3>
                   <button
                     onClick={() => {
-                      cartItems.forEach((item) => deleteFromCart(item.id));
+                      cartItems.forEach((item) =>
+                        deleteFromCart(item.id, item.kitType)
+                      );
                     }}
                     className="px-4 py-2 border border-red-500 border-b-[4px] text-red-600 rounded-full font-semibold hover:bg-red-50 transition w-fit cursor-pointer"
                   >
@@ -74,7 +89,7 @@ export default function CartPage() {
 
                 {cartItems.map((item) => (
                   <div
-                    key={item.id}
+                    key={item.cartKey}
                     className="flex items-start gap-4 mb-6 border-b border-gray-300 pb-4"
                   >
                     <img
@@ -91,7 +106,14 @@ export default function CartPage() {
                         >
                           {item.title}
                         </p>
-                        <p className="text-sm text-gray-700 mt-1">₹ {item.price}</p>
+                        <p className="text-sm text-gray-700 mt-1">
+                          ₹ {item.price}
+                        </p>
+                        {item.kitType && (
+                          <p className="text-xs text-gray-500 mt-1">
+                            {item.kitType}
+                          </p>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-2 mt-2 border-t border-gray-300 pt-2">
@@ -99,24 +121,31 @@ export default function CartPage() {
                           onClick={() => {
                             const newQty = item.quantity - 1;
                             if (newQty <= 0) {
-                              deleteFromCart(item.id);
+                              deleteFromCart(item.id, item.kitType);
                             } else {
-                              removeFromCart(item.id);
+                              removeFromCart(item.id, item.kitType);
                             }
                           }}
                           className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300 cursor-pointer"
                         >
                           −
                         </button>
-                        <span className="text-sm w-6 text-center">{item.quantity}</span>
+                        <span className="text-sm w-6 text-center">
+                          {item.quantity}
+                        </span>
                         <button
-                          onClick={() => addToCart(item.id)}
+                          onClick={() =>
+                            addToCart(item.id, {
+                              kitType: item.kitType,
+                              price: item.price,
+                            })
+                          }
                           className="px-2 py-1 bg-gray-200 rounded-full text-sm hover:bg-gray-300 cursor-pointer"
                         >
                           +
                         </button>
                         <button
-                          onClick={() => deleteFromCart(item.id)}
+                          onClick={() => deleteFromCart(item.id, item.kitType)}
                           className="ml-2 text-red-500 hover:underline"
                           title="Remove Item"
                         >
@@ -125,7 +154,6 @@ export default function CartPage() {
                       </div>
                     </div>
                   </div>
-
                 ))}
               </div>
             </div>

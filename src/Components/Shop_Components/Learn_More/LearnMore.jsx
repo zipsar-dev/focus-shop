@@ -10,7 +10,7 @@ const subjects = [
     ],
     shopLink: "#",
     samplePDF: "#",
-    image: "/Images/Planner.jpg",
+    image: "/Images/Books/Planner.jpg",
     color: "border-blue-800",
   },
   {
@@ -21,7 +21,7 @@ const subjects = [
     ],
     shopLink: "#",
     samplePDF: "#",
-    image: "/Images/Test series.jpg",
+    image: "/Images/Books/Test series.jpg",
     color: "border-red-500",
   },
   {
@@ -32,7 +32,7 @@ const subjects = [
     ],
     shopLink: "#",
     samplePDF: "#",
-    image: "/Images/Manual.jpg",
+    image: "/Images/Books/Manual.jpg",
     color: "border-yellow-400",
   },
 ];

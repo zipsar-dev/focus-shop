@@ -2,9 +2,17 @@ import { useContext } from "react";
 import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
+import { useKit } from "../../../context/KitContext"; // Import the Kit context
 import products from "../../../data/products";
 
-const ProductCard = ({ product, quantity, onAdd, onRemove }) => {
+const ProductCard = ({
+  product,
+  quantity,
+  onAdd,
+  onRemove,
+  currentPrice,
+  selectedKit,
+}) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -58,7 +66,10 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => {
         </div>
 
         <div className="flex items-center justify-between mt-4">
-          <span className="text-lg font-bold">₹ {product.price}</span>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold">₹ {currentPrice}</span>
+            <span className="text-xs text-gray-500">{selectedKit}</span>
+          </div>
           <div
             className="flex items-center border border-gray-300 rounded-full px-3 py-1 w-[100px] justify-between"
             onClick={handleQuantityClick}
@@ -91,30 +102,64 @@ const ProductCard = ({ product, quantity, onAdd, onRemove }) => {
 };
 
 export default function ShopCard() {
-  const { cart, addToCart, removeFromCart } = useContext(CartContext);
+  const { addToCart, removeFromCart, getProductQuantity } =
+    useContext(CartContext);
+  const { selectedKit, getProductPrice } = useKit(); // Use the Kit context
   const navigate = useNavigate();
 
   const handleBuy = () => {
     navigate("/cart");
   };
 
+  // Enhanced add to cart function that includes current price and kit info
+  const handleAddToCart = (productId) => {
+    const product = products.find((p) => p.id === productId);
+    const currentPrice = getProductPrice(product);
+
+    // Add to cart with additional kit information
+    addToCart(productId, {
+      kitType: selectedKit,
+      price: currentPrice,
+    });
+  };
+
+  // Enhanced remove from cart function
+  const handleRemoveFromCart = (productId) => {
+    removeFromCart(productId, selectedKit);
+  };
+
   return (
     <div className="shop-card p-4 sm:p-6">
       <div className="bg-white shadow-lg rounded-[32px] p-6 md:p-12 max-w-[90%] md:max-w-[76%] mx-auto my-12">
-        <h2 className="text-2xl font-semibold mb-6 text-center sm:text-left">
-          Shop Study Kits
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {products.map((product, index) => (
-            <ProductCard
-              key={index}
-              product={product}
-              quantity={cart[product.id] || 0}
-              onAdd={() => addToCart(product.id)}
-              onRemove={() => removeFromCart(product.id)}
-            />
-          ))}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-semibold text-center sm:text-left">
+            Shop Study Kits
+          </h2>
+          <div className="text-sm text-gray-600 bg-blue-50 px-3 py-1 rounded-full">
+            Current Kit:{" "}
+            <span className="font-semibold text-blue-700">{selectedKit}</span>
+          </div>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {products.map((product, index) => {
+            const currentPrice = getProductPrice(product);
+            const quantity = getProductQuantity(product.id, selectedKit);
+
+            return (
+              <ProductCard
+                key={index}
+                product={product}
+                quantity={quantity}
+                currentPrice={currentPrice}
+                selectedKit={selectedKit}
+                onAdd={() => handleAddToCart(product.id)}
+                onRemove={() => handleRemoveFromCart(product.id)}
+              />
+            );
+          })}
+        </div>
+
         <div className="mt-6 flex justify-center">
           <button
             onClick={handleBuy}

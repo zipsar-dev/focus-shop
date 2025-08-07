@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { BookOpen, FileLock2, PackageCheck, CheckCircle } from "lucide-react";
+import { useKit } from "../../../context/KitContext"; // Import the context hook
 
 export default function Selected_Hero({ debug = false }) {
-  const [selectedFormat, setSelectedFormat] = useState("Lite Kit");
+  const { selectedKit, setSelectedKit } = useKit(); // Use context instead of local state
 
   const border = () =>
     debug ? `border border-dashed border-red-400 p-2 rounded` : "";
@@ -27,6 +27,11 @@ export default function Selected_Hero({ debug = false }) {
       "Weekly MCQ Marathon",
       "Mentorship for Strategy & Accountability",
     ],
+  };
+
+  // Handle kit selection change
+  const handleKitChange = (kit) => {
+    setSelectedKit(kit);
   };
 
   return (
@@ -67,7 +72,7 @@ export default function Selected_Hero({ debug = false }) {
             )}`}
           >
             <img
-              src="/Images/Both Group books.jpg"
+              src="/Images/Books/Both Group books.jpg"
               alt="CA Foundation Reviewer"
               className="w-[90%] max-w-[500px] drop-shadow-xl"
             />
@@ -153,9 +158,9 @@ export default function Selected_Hero({ debug = false }) {
                 {["Lite Kit", "Essentials Kit", "Pro Kit"].map((kit) => (
                   <button
                     key={kit}
-                    onClick={() => setSelectedFormat(kit)}
+                    onClick={() => handleKitChange(kit)}
                     className={`w-full sm:w-1/3 flex items-center gap-2 px-4 py-3 rounded-[14px] font-medium transition-all justify-center cursor-pointer ${
-                      selectedFormat === kit
+                      selectedKit === kit
                         ? "bg-[#4F7BF8] text-white shadow border border-black text-2xl"
                         : "text-black"
                     }`}
@@ -169,10 +174,10 @@ export default function Selected_Hero({ debug = false }) {
             {/* Kit Description (Updated) */}
             <div className="bg-white px-6 py-5 rounded-xl shadow w-full sm:w-[80%]">
               <h3 className="text-md font-semibold mb-4 text-blue-700">
-                {selectedFormat} includes:
+                {selectedKit} includes:
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
-                {formatDetails[selectedFormat].map((line, i) => (
+                {formatDetails[selectedKit].map((line, i) => (
                   <div
                     key={i}
                     className="flex items-start gap-2 text-gray-800 text-sm"
