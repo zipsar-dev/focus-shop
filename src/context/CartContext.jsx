@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
+import products from "../data/products";
 
 export const CartContext = createContext();
 
@@ -132,6 +133,41 @@ export const CartProvider = ({ children }) => {
     setCartDetails({});
   };
 
+  // Function to get the appropriate shop path based on kit type
+  const getShopPath = (product, kitType) => {
+    if (kitType === "Lite Kit") {
+      return product.lite_shop_path;
+    } else {
+      // For both "Essentials Kit" and "Pro Kit", use essential_shop_path
+      return product.essential_shop_path;
+    }
+  };
+
+  // Function to navigate to cart (redirect to first product's shop path)
+  const navigateToCart = () => {
+    // Get all cart items
+    const cartItems = getCartItems();
+
+    if (cartItems.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    // Get the first product in cart
+    const firstCartItem = cartItems[0];
+    const product = products.find((p) => p.id === firstCartItem.id);
+
+    if (product) {
+      const shopPath = getShopPath(product, firstCartItem.kitType);
+      if (shopPath) {
+        window.open(shopPath, "_blank");
+      } else {
+        console.error("Shop path not found for product:", product.title);
+        alert("Shop path not available for this product.");
+      }
+    }
+  };
+
   const contextValue = useMemo(
     () => ({
       cart,
@@ -144,7 +180,9 @@ export const CartProvider = ({ children }) => {
       getCartCount,
       getCartItems,
       clearCart,
-      createCartKey, // Expose this for components that need it
+      createCartKey,
+      navigateToCart,
+      getShopPath,
     }),
     [cart, cartDetails]
   );

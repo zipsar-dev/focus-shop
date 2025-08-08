@@ -105,10 +105,33 @@ export default function ShopCard() {
   const { addToCart, removeFromCart, getProductQuantity } =
     useContext(CartContext);
   const { selectedKit, getProductPrice } = useKit(); // Use the Kit context
-  const navigate = useNavigate();
+
+  // Function to get the appropriate shop path based on selected kit
+  const getShopPath = (product, kitType) => {
+    if (kitType === "Lite Kit") {
+      return product.lite_shop_path;
+    } else {
+      // For both "Essentials Kit" and "Pro Kit", use essential_shop_path
+      return product.essential_shop_path;
+    }
+  };
 
   const handleBuy = () => {
-    navigate("/cart");
+    // Find the first product in cart
+    const cartItems = products.filter((product) => {
+      const quantity = getProductQuantity(product.id, selectedKit);
+      return quantity > 0;
+    });
+
+    if (cartItems.length > 0) {
+      const firstProduct = cartItems[0];
+      const shopPath = getShopPath(firstProduct, selectedKit);
+      if (shopPath) {
+        window.open(shopPath, "_blank");
+      }
+    } else {
+      alert("Please add items to cart first!");
+    }
   };
 
   // Enhanced add to cart function that includes current price and kit info
@@ -165,7 +188,7 @@ export default function ShopCard() {
             onClick={handleBuy}
             className="bg-white border border-black border-b-[5px] rounded-full px-6 py-3 text-blue-700 font-semibold hover:bg-blue-50 transition w-full sm:w-auto text-center cursor-pointer"
           >
-            Review Cart & Buy →
+            Buy Now →
           </button>
         </div>
       </div>
