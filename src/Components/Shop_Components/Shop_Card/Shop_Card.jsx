@@ -1,26 +1,26 @@
-import { useContext } from "react";
-import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../../context/CartContext";
 import { useKit } from "../../../context/KitContext"; // Import the Kit context
 import products from "../../../data/products";
 
-const ProductCard = ({
-  product,
-  quantity,
-  onAdd,
-  onRemove,
-  currentPrice,
-  selectedKit,
-}) => {
+const ProductCard = ({ product, currentPrice, selectedKit }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
     navigate(`/material/${product.keyName}`);
   };
 
-  const handleQuantityClick = (e) => {
-    e.stopPropagation(); // Prevent card click when quantity buttons are clicked
+  // Function to get the appropriate shop path based on selected kit
+  const getShopPath = (product, kitType) => {
+    if (kitType === "Lite Kit") {
+      return product.lite_shop_path;
+    } else {
+      // For both "Essentials Kit" and "Pro Kit", use essential_shop_path
+      return product.essential_shop_path;
+    }
+  };
+
+  const handleBuyNow = (e) => {
+    navigate(`/material/${product.keyName}`);
   };
 
   return (
@@ -58,11 +58,13 @@ const ProductCard = ({
             </span>
           )}
 
-          {product.offer && (
-            <p className="text-red-500 text-xs mt-1 font-medium">
-              {product.offer}
-            </p>
-          )}
+          {/* Show offer only if it's not the COMBO offer */}
+          {product.offer &&
+            !product.offer.includes("Recommended Use code COMBO") && (
+              <p className="text-red-500 text-xs mt-1 font-medium">
+                {product.offer}
+              </p>
+            )}
         </div>
 
         <div className="flex items-center justify-between mt-4">
@@ -70,31 +72,14 @@ const ProductCard = ({
             <span className="text-lg font-bold">₹ {currentPrice}</span>
             <span className="text-xs text-gray-500">{selectedKit}</span>
           </div>
-          <div
-            className="flex items-center border border-gray-300 rounded-full px-3 py-1 w-[100px] justify-between"
-            onClick={handleQuantityClick}
+
+          {/* Direct Buy Now button */}
+          <button
+            onClick={handleBuyNow}
+            className="text-sm cursor-pointer bg-blue-600 text-white px-4 py-1 rounded-full hover:bg-blue-700 transition"
           >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onRemove();
-              }}
-              disabled={quantity === 0}
-              className="text-gray-500 hover:text-black disabled:opacity-40 cursor-pointer"
-            >
-              <Minus size={16} />
-            </button>
-            <span className="text-sm">{quantity}</span>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onAdd();
-              }}
-              className="text-gray-500 hover:text-black cursor-pointer"
-            >
-              <Plus size={16} />
-            </button>
-          </div>
+            Buy Now
+          </button>
         </div>
       </div>
     </div>
@@ -102,54 +87,7 @@ const ProductCard = ({
 };
 
 export default function ShopCard() {
-  const { addToCart, removeFromCart, getProductQuantity } =
-    useContext(CartContext);
   const { selectedKit, getProductPrice } = useKit(); // Use the Kit context
-
-  // Function to get the appropriate shop path based on selected kit
-  const getShopPath = (product, kitType) => {
-    if (kitType === "Lite Kit") {
-      return product.lite_shop_path;
-    } else {
-      // For both "Essentials Kit" and "Pro Kit", use essential_shop_path
-      return product.essential_shop_path;
-    }
-  };
-
-  const handleBuy = () => {
-    // Find the first product in cart
-    const cartItems = products.filter((product) => {
-      const quantity = getProductQuantity(product.id, selectedKit);
-      return quantity > 0;
-    });
-
-    if (cartItems.length > 0) {
-      const firstProduct = cartItems[0];
-      const shopPath = getShopPath(firstProduct, selectedKit);
-      if (shopPath) {
-        window.open(shopPath, "_blank");
-      }
-    } else {
-      alert("Please add items to cart first!");
-    }
-  };
-
-  // Enhanced add to cart function that includes current price and kit info
-  const handleAddToCart = (productId) => {
-    const product = products.find((p) => p.id === productId);
-    const currentPrice = getProductPrice(product);
-
-    // Add to cart with additional kit information
-    addToCart(productId, {
-      kitType: selectedKit,
-      price: currentPrice,
-    });
-  };
-
-  // Enhanced remove from cart function
-  const handleRemoveFromCart = (productId) => {
-    removeFromCart(productId, selectedKit);
-  };
 
   return (
     <div className="shop-card p-4 sm:p-6">
@@ -167,29 +105,16 @@ export default function ShopCard() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {products.map((product, index) => {
             const currentPrice = getProductPrice(product);
-            const quantity = getProductQuantity(product.id, selectedKit);
 
             return (
               <ProductCard
                 key={index}
                 product={product}
-                quantity={quantity}
                 currentPrice={currentPrice}
                 selectedKit={selectedKit}
-                onAdd={() => handleAddToCart(product.id)}
-                onRemove={() => handleRemoveFromCart(product.id)}
               />
             );
           })}
-        </div>
-
-        <div className="mt-6 flex justify-center">
-          <button
-            onClick={handleBuy}
-            className="bg-white border border-black border-b-[5px] rounded-full px-6 py-3 text-blue-700 font-semibold hover:bg-blue-50 transition w-full sm:w-auto text-center cursor-pointer"
-          >
-            Buy Now →
-          </button>
         </div>
       </div>
     </div>

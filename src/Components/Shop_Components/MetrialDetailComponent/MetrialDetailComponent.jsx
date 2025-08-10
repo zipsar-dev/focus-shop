@@ -150,7 +150,7 @@ export default function MaterialDetailComponent() {
                   </div>
 
                   {/* Quantity Controls */}
-                  <div className="flex items-center border border-gray-300 rounded-full px-4 py-2">
+                  {/* <div className="flex items-center border border-gray-300 rounded-full px-4 py-2">
                     <button
                       onClick={handleRemoveFromCart}
                       disabled={quantity === 0}
@@ -167,7 +167,7 @@ export default function MaterialDetailComponent() {
                     >
                       <Plus size={18} />
                     </button>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Action Buttons */}
@@ -179,12 +179,12 @@ export default function MaterialDetailComponent() {
                     Buy Now
                   </button>
 
-                  <button
+                  {/* <button
                     onClick={handleAddToCart}
                     className="w-full bg-white border-2 border-blue-600 text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-blue-50 transition duration-200"
                   >
                     Add to Cart
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
