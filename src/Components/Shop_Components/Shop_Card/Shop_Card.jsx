@@ -52,19 +52,19 @@ const ProductCard = ({ product, currentPrice, selectedKit }) => {
             </ul>
           )}
 
-          {product.tag && (
+          {/* {product.tag && (
             <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-2">
               {product.tag}
             </span>
-          )}
+          )} */}
 
           {/* Show offer only if it's not the COMBO offer */}
-          {product.offer &&
+          {/* {product.offer &&
             !product.offer.includes("Recommended Use code COMBO") && (
               <p className="text-red-500 text-xs mt-1 font-medium">
                 {product.offer}
               </p>
-            )}
+            )} */}
         </div>
 
         <div className="flex items-center justify-between mt-4">
