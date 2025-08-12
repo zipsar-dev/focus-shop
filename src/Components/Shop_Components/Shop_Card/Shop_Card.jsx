@@ -4,28 +4,26 @@ import products from "../../../data/products";
 
 const ProductCard = ({ product, currentPrice, selectedKit }) => {
   const navigate = useNavigate();
+  const isProKit = selectedKit === "Pro Kit";
 
   const handleCardClick = () => {
-    navigate(`/material/${product.keyName}`);
-  };
-
-  // Function to get the appropriate shop path based on selected kit
-  const getShopPath = (product, kitType) => {
-    if (kitType === "Lite Kit") {
-      return product.lite_shop_path;
-    } else {
-      // For both "Essentials Kit" and "Pro Kit", use essential_shop_path
-      return product.essential_shop_path;
+    if (!isProKit) {
+      navigate(`/material/${product.keyName}`);
     }
   };
 
   const handleBuyNow = (e) => {
+    e.stopPropagation(); // prevent triggering card click
     navigate(`/material/${product.keyName}`);
   };
 
   return (
     <div
-      className="product-card rounded-[16px] bg-white shadow-md p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 border border-gray-200 transition hover:shadow-lg hover:scale-[1.01] duration-200 cursor-pointer"
+      className={`product-card rounded-[16px] bg-white shadow-md p-4 flex flex-col sm:flex-row gap-4 sm:gap-6 border border-gray-200 transition duration-200 ${
+        isProKit
+          ? "cursor-default"
+          : "cursor-pointer hover:shadow-lg hover:scale-[1.01]"
+      }`}
       onClick={handleCardClick}
     >
       <div className="w-full sm:w-[160px] shrink-0">
@@ -51,35 +49,27 @@ const ProductCard = ({ product, currentPrice, selectedKit }) => {
               ))}
             </ul>
           )}
-
-          {/* {product.tag && (
-            <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-2">
-              {product.tag}
-            </span>
-          )} */}
-
-          {/* Show offer only if it's not the COMBO offer */}
-          {/* {product.offer &&
-            !product.offer.includes("Recommended Use code COMBO") && (
-              <p className="text-red-500 text-xs mt-1 font-medium">
-                {product.offer}
-              </p>
-            )} */}
         </div>
 
         <div className="flex items-center justify-between mt-4">
-          <div className="flex flex-col">
-            <span className="text-lg font-bold">₹ {currentPrice}</span>
-            <span className="text-xs text-gray-500">{selectedKit}</span>
-          </div>
-
-          {/* Direct Buy Now button */}
-          <button
-            onClick={handleBuyNow}
-            className="text-sm cursor-pointer bg-blue-600 text-white px-4 py-1 rounded-full hover:bg-blue-700 transition"
-          >
-            Buy Now
-          </button>
+          {isProKit ? (
+            <span className="text-base font-semibold text-gray-500">
+              Coming Soon
+            </span>
+          ) : (
+            <>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold">₹ {currentPrice}</span>
+                <span className="text-xs text-gray-500">{selectedKit}</span>
+              </div>
+              <button
+                onClick={handleBuyNow}
+                className="text-sm cursor-pointer bg-blue-600 text-white px-4 py-1 rounded-full hover:bg-blue-700 transition"
+              >
+                Buy Now
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
@@ -105,7 +95,6 @@ export default function ShopCard() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {products.map((product, index) => {
             const currentPrice = getProductPrice(product);
-
             return (
               <ProductCard
                 key={index}
